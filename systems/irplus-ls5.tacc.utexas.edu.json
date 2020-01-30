@@ -1,0 +1,52 @@
+{
+    "id" : "irplus-ls5.tacc.utexas.edu",
+    "name" : "Lonestar 5 Supercomputer",
+    "status" : "UP",
+    "type" : "EXECUTION",
+    "description" : "1252 Cray XC40 compute nodes, each with two 12-core Intel® Xeon® processing cores for a total of 30,048 compute cores",
+    "site" : "ireceptor-plus.com",
+    "public" : true,
+    "executionType" : "HPC",
+    "scheduler" : "SLURM",
+    "environment" : null,
+    "startupScript" : null,
+    "maxSystemJobs" : 9999,
+    "maxSystemJobsPerUser" : 50,
+    "workDir" : "/work/01114/vdj",
+    "scratchDir" : "/scratch/01114/vdj",
+    "queues" : [ {
+      "name" : "normal",
+      "default" : true,
+      "maxJobs" : 9999,
+      "maxUserJobs" : 50,
+      "maxNodes" : 64,
+      "maxProcessorsPerNode" : 3072,
+      "maxRequestedTime": "48:00:00",
+      "maxMemoryPerNode" : "64GB",
+      "customDirectives" : "-A iReceptor"
+    } ],
+    "login" : {
+      "host" : "gateway.ls5.tacc.utexas.edu",
+      "port" : 22,
+      "protocol" : "SSH",
+      "auth" : {
+        "username": "vdj",
+	"publicKey": "",
+	"privateKey": "",
+        "type": "SSHKEYS"
+      }
+    },
+    "storage" : {
+      "host" : "gateway.ls5.tacc.utexas.edu",
+      "port" : 22,
+      "protocol" : "SFTP",
+      "rootDir" : "/",
+      "homeDir" : "/scratch/01114/vdj",
+      "auth" : {
+        "username": "vdj",
+	"publicKey": "",
+	"privateKey": "",
+        "type": "SSHKEYS"
+      }
+    }
+}
