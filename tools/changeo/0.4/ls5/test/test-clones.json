@@ -1,0 +1,16 @@
+{
+  "name":"define_clones",
+  "appId": "irplus-changeo-ls5-0.4",
+  "batchQueue": "normal",
+  "maxRunTime": "01:00:00",
+  "nodeCount": 1,
+  "archive": false,
+  "archiveSystem": "data.vdjserver.org",
+  "inputs": {
+    "rearrangement_file": "agave://data.vdjserver.org//irplus/apps/changeo/0.4/ls5/test/SRR1383450_2.igblast.airr.tsv.gz"
+  },
+  "parameters": {
+    "creator": "scott_test1",
+    "define_clones": true
+  }
+}
