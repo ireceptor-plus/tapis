@@ -6,4 +6,6 @@ Scripts and JSON definitions for deploying iReceptorPlus systems and apps in Tap
 
 # Contents
 
-* systems: JSON definitions for execution/storage systems
+* systems: JSON definitions for execution/storage systems.
+
+* apps: JSON definitions and application wrapper for tools.
