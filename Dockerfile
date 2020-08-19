@@ -18,9 +18,7 @@ RUN pip3 install \
     pandas \
     biopython \
     matplotlib \
-    airr \
-    presto \
-    changeo
+    airr
 
 # Tapis CLI
 RUN cd / && git clone https://github.com/TACC-Cloud/tapis-cli.git
