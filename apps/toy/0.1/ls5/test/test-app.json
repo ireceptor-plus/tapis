@@ -7,6 +7,7 @@
   "archive": false,
   "archiveSystem": "data.vdjserver.org",
   "inputs": {
+    "singularity_image": "agave://data.vdjserver.org//irplus/images/immcantation_suite-4.1.0.sif",
     "rearrangement_file": "agave://data.vdjserver.org//irplus/apps/toy/schristley/ls5/test/IGH_SRR1383450.airr.tsv.gz"
   },
   "parameters": {

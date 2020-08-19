@@ -8,6 +8,7 @@
 # These get set by Tapis
 
 # input files
+singularity_image="${singularity_image}"
 rearrangement_file="${rearrangement_file}"
 
 # application parameters
@@ -27,6 +28,7 @@ tar zxf binaries.tgz
 # modules
 module load python3
 module load launcher/3.4
+module load tacc-singularity
 
 PYTHON=python3
 
