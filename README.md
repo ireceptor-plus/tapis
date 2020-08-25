@@ -45,7 +45,7 @@ we mount a local directory into the docker container where the files are saved.
 mkdir tapis-token
 ```
 
-Run a bash shell and initialize Tapis. The initialization with ask a few questions.
+Run a bash shell and initialize Tapis. The initialization will ask a few questions.
 When it asks for the tenant name, pick `vdjserver.org`. It will then ask for your VDJServer
 username and password for login.
 The prompts for container registry access and git server access can be left blank or
@@ -84,7 +84,7 @@ tapis files list agave:///irplus
 
 ## App Development
 
-While the docker image provides a copy of this repository, any changes you make to the file
+While the docker image provides a copy of this repository, any changes you make to files within the image
 might be lost, so clone this repository to your local system and mount it in the docker
 container for doing development. You will generally want to perform git commands and use
 an editor outside of docker.
