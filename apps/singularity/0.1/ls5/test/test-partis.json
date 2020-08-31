@@ -1,0 +1,14 @@
+{
+  "name":"build_partis",
+  "appId": "irplus-singularity-ls5-0.1u1",
+  "batchQueue": "normal",
+  "maxRunTime": "01:00:00",
+  "nodeCount": 1,
+  "archive": false,
+  "archiveSystem": "data.vdjserver.org",
+  "parameters": {
+    "creator": "schristley",
+    "docker_image": "psathyrella/partis:latest",
+    "singularity_image": "partis-latest"
+  }
+}

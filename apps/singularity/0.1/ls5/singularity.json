@@ -1,0 +1,88 @@
+{
+  "name": "irplus-singularity-ls5",
+  "version": "0.1",
+  "label": "singularity",
+  "defaultQueue": "normal",
+  "defaultNodeCount": 1,
+  "defaultProcessorsPerNode": 40,
+  "defaultRequestedTime": "1:00:00",
+  "shortDescription": "Create singularity image from docker image on Lonestar5",
+  "longDescription": "Create singularity image from docker image on Lonestar5",
+  "executionType": "HPC",
+  "executionSystem": "irplus-ls5.tacc.utexas.edu",
+  "parallelism": "PARALLEL",
+  "checkpointable": false,
+  "deploymentPath": "/irplus/apps/singularity/0.1/ls5/",
+  "deploymentSystem": "data.vdjserver.org",
+  "templatePath": "singularity.sh",
+  "testPath": "test/test.sh",
+  "ontology": [
+    "http://sswapmeet.sswap.info/agave/apps/Application"
+  ],
+  "modules": [
+    "purge",
+    "load TACC"
+  ],
+  "parameters": [
+    {
+      "id": "creator",
+      "value": {
+        "visible": true,
+        "required": true,
+        "type": "string",
+        "default": ""
+      },
+      "details": {
+        "label": "Creator",
+        "description": "Username that created this job."
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:string"
+        ]
+      }
+    },
+    {
+      "id": "docker_image",
+      "value": {
+        "visible": true,
+        "required": true,
+        "type": "string",
+        "default": ""
+      },
+      "details": {
+        "label": "Docker Image",
+        "description": "Name of input docker image on docker hub."
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:string"
+        ]
+      }
+    },
+    {
+      "id": "singularity_image",
+      "value": {
+        "visible": true,
+        "required": true,
+        "type": "string",
+        "default": ""
+      },
+      "details": {
+        "label": "Singularity Image",
+        "description": "Name of output singularity image."
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:string"
+        ]
+      }
+    }
+  ]
+}
