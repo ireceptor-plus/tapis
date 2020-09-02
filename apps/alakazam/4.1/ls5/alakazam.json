@@ -1,7 +1,7 @@
 {
   "name": "irplus-alakazam-ls5",
   "version": "4.1",
-  "label": "toy",
+  "label": "alakazam",
   "defaultQueue": "normal",
   "defaultNodeCount": 1,
   "defaultProcessorsPerNode": 40,
@@ -93,7 +93,7 @@
       }
     },
     {
-      "id": "single_flag",
+      "id": "gene_usage_flag",
       "value": {
         "visible": true,
         "required": true,
@@ -105,7 +105,7 @@
       },
       "details": {
         "label": "",
-        "description": "Boolean flag parameter",
+        "description": "Calculate gene usage",
         "argument": null,
         "showArgument": false,
         "repeatArgument": false

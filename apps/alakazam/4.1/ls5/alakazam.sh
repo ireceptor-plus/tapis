@@ -12,7 +12,7 @@ singularity_image="${singularity_image}"
 rearrangement_file="${rearrangement_file}"
 
 # application parameters
-single_flag=${single_flag}
+gene_usage_flag=${gene_usage_flag}
 optional_number="${optional_number}"
 optional_enum="${optional_enum}"
 
@@ -36,7 +36,7 @@ export PATH="$PWD/bin:${PATH}"
 export PYTHONPATH=$PWD/lib/python3.7/site-packages:$PYTHONPATH
 
 # bring in common functions
-source ./toy_common.sh
+source ./alakazam_common.sh
 
 # ----------------------------------------------------------------------------
 # Launcher to use multicores on node

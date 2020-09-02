@@ -24,6 +24,7 @@ tapis files mkdir agave:///irplus/apps/$TOOL/$VER/$SYSTEM test
 tapis files upload agave:///irplus/apps/$TOOL/$VER/$SYSTEM alakazam.sh
 tapis files upload agave:///irplus/apps/$TOOL/$VER/$SYSTEM alakazam.json
 tapis files upload agave:///irplus/apps/$TOOL/$VER/$SYSTEM ../common/alakazam_common.sh
+tapis files upload agave:///irplus/apps/$TOOL/$VER/$SYSTEM ../common/create_r_scripts.py
 tapis files list agave:///irplus/apps/$TOOL/$VER/$SYSTEM
 
 # upload test assets

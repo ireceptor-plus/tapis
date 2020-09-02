@@ -70,7 +70,7 @@ function print_parameters() {
     echo "rearrangement_file=${rearrangement_file}"
     echo ""
     echo "Application parameters:"
-    echo "single_flag=${single_flag}"
+    echo "gene_usage_flag=${gene_usage_flag}"
     echo "optional_number=${optional_number}"
     echo "optional_enum=${optional_enum}"
 }
@@ -78,55 +78,16 @@ function print_parameters() {
 function run_alakazam_workflow() {
     initProvenance
 
-    # launcher job file
-    if [ -f joblist ]; then
-        echo "Warning: removing file 'joblist'.  That filename is reserved." 1>&2
-        rm joblist
-        touch joblist
-    fi
-    noArchive "joblist"
+    # Gene Usage
+    if [[ $gene_usage_flag -eq 1 ]]; then
+        # expand rearrangement file if its compressed
+        expandfile $rearrangement_file
 
-    # for each file
-    # decompress if necessary
-    # generate commands to run
-    fileList=($rearrangement_file)
-    count=0
-    while [ "x${fileList[count]}" != "x" ]
-    do
-        file=${fileList[count]}
-        noArchive $file
-        expandfile $file
-        filename="${file##*/}"
-        fileBasename="${file%.*}" # file.airr.tsv -> file.airr
-        fileOutname=${fileBasename}.clones.tsv
-        noArchive $fileOutname
+        # generate R script
+        $PYTHON ./create_r_scripts.py --rearrangement_file $file --gene gene_usage.R
 
-        #ARGS="--format airr --act set --model ham --sym min --norm len --dist 0.165"
-        #if [ -n "$define_clones_mode" ]; then
-        #    ARGS="$ARGS --mode $define_clones_mode"
-        #fi
-        #if [ -n "$define_clones_nproc" ]; then
-        #    ARGS="$ARGS --nproc $define_clones_nproc"
-        #fi
-
-        # Define Clones
-        #if [[ $define_clones -eq 1 ]]; then
-        #    echo "DefineClones.py -d ${filename} -o ${fileOutname} $ARGS" >> joblist
-        #fi
-
-        count=$(( $count + 1 ))
-    done
-
-    # check number of jobs to be run
-    numJobs=$(cat joblist | wc -l)
-    export LAUNCHER_PPN=$LAUNCHER_LOW_PPN
-    if [ $numJobs -lt $LAUNCHER_PPN ]; then
-        export LAUNCHER_PPN=$numJobs
+        # run it
+        singularity exec -B $PWD:/data ${singularity_image} R --no-save < gene_usage.R
     fi
 
-    # run launcher
-    #$LAUNCHER_DIR/paramrun
-
-    ls -l
-    
 }

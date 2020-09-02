@@ -8,10 +8,10 @@
   "archiveSystem": "data.vdjserver.org",
   "inputs": {
     "singularity_image": "agave://data.vdjserver.org//irplus/images/immcantation_suite-4.1.0.sif",
-    "rearrangement_file": "agave://data.vdjserver.org//irplus/data/ipa1-668.tsv"
+    "rearrangement_file": "agave://data.vdjserver.org//irplus/data/TCR/vdjserver1.airr.tsv.gz"
   },
   "parameters": {
     "creator": "schristley",
-    "single_flag": true
+    "gene_usage_flag": true
   }
 }
