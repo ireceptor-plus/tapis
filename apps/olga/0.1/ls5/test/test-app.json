@@ -1,0 +1,15 @@
+{
+  "name":"test_olga",
+  "appId": "irplus-olga-ls5-0.1-0.1",
+  "batchQueue": "normal",
+  "maxRunTime": "01:00:00",
+  "nodeCount": 1,
+  "archive": false,
+  "archiveSystem": "data.vdjserver.org",
+  "inputs": {
+    "singularity_image": "agave://data.vdjserver.org//irplus/images/olga/olga-latest.sif"
+  },
+  "parameters": {
+    "creator": "schristley"
+  }
+}
