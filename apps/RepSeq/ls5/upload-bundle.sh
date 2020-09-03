@@ -1,5 +1,5 @@
 #
-TOOL=toy
+TOOL=RepSeq
 SYSTEM=ls5
 #VER=0.1
 VER=aurelienbzh
