@@ -60,7 +60,7 @@ function initProvenance() {
 function print_versions() {
     echo "VERSIONS:"
     #echo "  $(DefineClones.py --version 2>&1)"
-    singularity exec ${singularity_image} ccellranger --version
+    singularity exec ${singularity_image} cellranger --version
     echo -e "\nSTART at $(date)"
 }
 
