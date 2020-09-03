@@ -13,8 +13,8 @@ rearrangement_file="${rearrangement_file}"
 
 # application parameters
 gene_usage_flag=${gene_usage_flag}
-optional_number="${optional_number}"
-optional_enum="${optional_enum}"
+aa_properties_flag="${aa_properties_flag}"
+aa_properties_trim="${aa_properties_trim}"
 
 # Agave info
 AGAVE_JOB_ID=${AGAVE_JOB_ID}
@@ -24,6 +24,9 @@ AGAVE_LOG_NAME=${AGAVE_JOB_NAME}-${AGAVE_JOB_ID}
 # ----------------------------------------------------------------------------
 # unpack local executables
 #tar zxf binaries.tgz
+
+chmod +x gene_usage.R
+chmod +x aa_properties.R
 
 # modules
 module load python3

@@ -1,5 +1,5 @@
 {
-  "name":"gene_usage",
+  "name":"aa_properties",
   "appId": "irplus-alakazam-ls5-4.1",
   "batchQueue": "normal",
   "maxRunTime": "01:00:00",
@@ -12,7 +12,7 @@
   },
   "parameters": {
     "creator": "schristley",
-    "gene_usage_flag": true,
-    "aa_properties_flag": false
+    "gene_usage_flag": false,
+    "aa_properties_flag": true
   }
 }

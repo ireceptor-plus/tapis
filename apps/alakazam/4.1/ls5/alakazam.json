@@ -119,6 +119,58 @@
       }
     },
     {
+      "id": "aa_properties_flag",
+      "value": {
+        "visible": true,
+        "required": true,
+        "type": "bool",
+        "order": 0,
+        "enquote": false,
+        "default": false,
+        "validator": null
+      },
+      "details": {
+        "label": "",
+        "description": "Calculate amino acid properties",
+        "argument": null,
+        "showArgument": false,
+        "repeatArgument": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:boolean"
+        ]
+      }
+    },
+    {
+      "id": "aa_properties_trim",
+      "value": {
+        "visible": true,
+        "required": false,
+        "type": "bool",
+        "order": 0,
+        "enquote": false,
+        "default": false,
+        "validator": null
+      },
+      "details": {
+        "label": "",
+        "description": "Trim parameter for calculate amino acid properties",
+        "argument": null,
+        "showArgument": false,
+        "repeatArgument": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:boolean"
+        ]
+      }
+    },
+    {
       "id": "optional_number",
       "value": {
         "visible": true,

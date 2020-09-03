@@ -71,23 +71,26 @@ function print_parameters() {
     echo ""
     echo "Application parameters:"
     echo "gene_usage_flag=${gene_usage_flag}"
-    echo "optional_number=${optional_number}"
-    echo "optional_enum=${optional_enum}"
+    echo "aa_properties_flag=${aa_properties_flag}"
+    echo "aa_properties_trim=${aa_properties_trim}"
 }
 
 function run_alakazam_workflow() {
     initProvenance
 
+    # expand rearrangement file if its compressed
+    expandfile $rearrangement_file
+    noArchive $file
+
     # Gene Usage
     if [[ $gene_usage_flag -eq 1 ]]; then
-        # expand rearrangement file if its compressed
-        expandfile $rearrangement_file
+        singularity exec -B $PWD:/data ${singularity_image} /data/gene_usage.R -d $file
+    fi
 
-        # generate R script
-        $PYTHON ./create_r_scripts.py --rearrangement_file $file --gene gene_usage.R
-
+    # Amino Acid properties
+    if [[ $aa_properties_flag -eq 1 ]]; then
         # run it
-        singularity exec -B $PWD:/data ${singularity_image} R --no-save < gene_usage.R
+        singularity exec -B $PWD:/data ${singularity_image} /data/aa_properties.R -d $file
     fi
 
 }
