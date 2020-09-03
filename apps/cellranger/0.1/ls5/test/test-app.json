@@ -1,0 +1,17 @@
+{
+  "name":"test_cellranger",
+  "appId": "irplus-cellranger-ls5-franasa-0.1",
+  "batchQueue": "normal",
+  "maxRunTime": "01:00:00",
+  "nodeCount": 1,
+  "archive": false,
+  "archiveSystem": "data.vdjserver.org",
+  "inputs": {
+    "singularity_image": "agave://data.vdjserver.org//irplus/images/cellranger4/cellranger4.sif",
+    "input_folder": "agave://data.vdjserver.org//irplus/apps/cellranger/franasa/ls5/test/"
+  },
+  "parameters": {
+    "creator": "franasa",
+    "single_flag": true
+  }
+}
