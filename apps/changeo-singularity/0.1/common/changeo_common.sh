@@ -11,7 +11,7 @@
 # The agave app input and parameters
 
 # the app
-export APP_NAME=toy
+export APP_NAME=chango-singularity
 
 # ----------------------------------------------------------------------------
 function expandfile () {
@@ -51,11 +51,10 @@ function initProvenance() {
 }
 
 # ----------------------------------------------------------------------------
-# Toy workflow
+# Workflow functions
 
 function print_versions() {
     echo "VERSIONS:"
-    #echo "  $(DefineClones.py --version 2>&1)"
     singularity exec ${singularity_image} versions report
     echo -e "\nSTART at $(date)"
 }
@@ -72,58 +71,12 @@ function print_parameters() {
 }
 
 function run_workflow() {
+    # Do some provenance - mostly a placeholder for now.
     initProvenance
 
-    singularity exec ${singularity_image} DefineClones.py -v
-    # launcher job file
-#    if [ -f joblist ]; then
-#        echo "Warning: removing file 'joblist'.  That filename is reserved." 1>&2
-#        rm joblist
-#        touch joblist
-#    fi
-#    noArchive "joblist"
+    # Run DefineClones.py on rearrangement file provided.
+    singularity exec -B $PWD:/data ${singularity_image} DefineClones.py -d ${rearrangement_file}
 
-    # for each file
-    # decompress if necessary
-    # generate commands to run
-#    fileList=($rearrangement_file)
-#    count=0
-#    while [ "x${fileList[count]}" != "x" ]
-#    do
-#        file=${fileList[count]}
-#        noArchive $file
-#        expandfile $file
-#        filename="${file##*/}"
-#        fileBasename="${file%.*}" # file.airr.tsv -> file.airr
-#        fileOutname=${fileBasename}.clones.tsv
-#        noArchive $fileOutname
-
-        #ARGS="--format airr --act set --model ham --sym min --norm len --dist 0.165"
-        #if [ -n "$define_clones_mode" ]; then
-        #    ARGS="$ARGS --mode $define_clones_mode"
-        #fi
-        #if [ -n "$define_clones_nproc" ]; then
-        #    ARGS="$ARGS --nproc $define_clones_nproc"
-        #fi
-
-        # Define Clones
-        #if [[ $define_clones -eq 1 ]]; then
-        #    echo "DefineClones.py -d ${filename} -o ${fileOutname} $ARGS" >> joblist
-        #fi
-
-#        count=$(( $count + 1 ))
-#    done
-
-    # check number of jobs to be run
-#    numJobs=$(cat joblist | wc -l)
-#    export LAUNCHER_PPN=$LAUNCHER_LOW_PPN
-#    if [ $numJobs -lt $LAUNCHER_PPN ]; then
-#        export LAUNCHER_PPN=$numJobs
-#    fi
-
-    # run launcher
-    #$LAUNCHER_DIR/paramrun
-
+    # List the files in the directory produced by the above job (for provenance).
     ls -l
-    
 }
