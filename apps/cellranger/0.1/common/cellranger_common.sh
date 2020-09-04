@@ -67,7 +67,7 @@ function print_versions() {
 function print_parameters() {
     echo "Input files:"
     echo "singularity_image=${singularity_image}"
-    echo "input_folder=${input_folder}"
+    echo "input_file=${input_file}"
     echo ""
     echo "Application parameters:"
     echo "single_flag=${single_flag}"
@@ -78,6 +78,7 @@ function print_parameters() {
 function run_cellranger_workflow() {
     initProvenance
 
+    fileBasename=${input_file##*/}
     # launcher job file
     if [ -f joblist ]; then
         echo "Warning: removing file 'joblist'.  That filename is reserved." 1>&2
@@ -86,20 +87,9 @@ function run_cellranger_workflow() {
     fi
     noArchive "joblist"
 
-    # for each file
-    # decompress if necessary
-    # generate commands to run
-    fileList=($input_folder)
-    count=0
-    while [ "x${fileList[count]}" != "x" ]
-    do
-        file=${fileList[count]}
-        noArchive $file
-        expandfile $file
-        filename="${file##*/}"
-        fileBasename="${file%.*}" # file.airr.tsv -> file.airr
-        fileOutname=${fileBasename}.clones.tsv
-        noArchive $fileOutname
+    singularity exec cellranger4.sif cellranger mkfastq --id=tutorial_walk_through \
+    --run=${fileBasename%.tar.gz} \
+    --csv=cellranger-tiny-bcl-simple-1.2.0.csv
 
         #ARGS="--format airr --act set --model ham --sym min --norm len --dist 0.165"
         #if [ -n "$define_clones_mode" ]; then
@@ -114,8 +104,6 @@ function run_cellranger_workflow() {
         #    echo "DefineClones.py -d ${filename} -o ${fileOutname} $ARGS" >> joblist
         #fi
 
-        count=$(( $count + 1 ))
-    done
 
     # check number of jobs to be run
     numJobs=$(cat joblist | wc -l)
