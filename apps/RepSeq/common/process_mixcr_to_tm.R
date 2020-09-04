@@ -23,13 +23,13 @@ main<-function(){
   try( dir.create(args$output_dir))
 
   #list file in input folder
-  treg_file_list <- list.files(args$directory, full.name = TRUE, pattern = ".*treg.*.txt")
-  teff_file_list <- list.files(args$directory, full.name = TRUE, pattern = ".*teff.*.txt")
-  process_file(treg_file_list,chain="A", paste(args$output_dir,"treg/",sep=""), args$level,args$directory)
-  process_file(treg_file_list,chain="B",paste(args$output_dir,"treg/",sep=""), args$level,args$directory)
+  file_list <- list.files(args$directory, full.name = TRUE, pattern = "*.tsv")
+  # teff_file_list <- list.files(args$directory, full.name = TRUE, pattern = ".*teff.*.txt")
+  process_file(file_list,chain="A",cellType="teff", paste(args$output_dir,"res/",sep=""), args$level,args$directory)
+  process_file(file_list,chain="B",cellType="teff",paste(args$output_dir,"res/",sep=""), args$level,args$directory)
   
-  process_file(teff_file_list,chain="A",cellType="teff", paste(args$output_dir,sep=""), args$level,args$directory)
-  process_file(teff_file_list,chain="B",cellType="treg",paste(args$output_dir,sep=""), args$level,args$directory)
+  # process_file(teff_file_list,chain="A",cellType="teff", paste(args$output_dir,sep=""), args$level,args$directory)
+  # process_file(teff_file_list,chain="B",cellType="treg",paste(args$output_dir,sep=""), args$level,args$directory)
 }
 
 #' process mixcr file to create sample info and diversity info
@@ -43,10 +43,10 @@ process_file<-function(inputFolder,cellType, chain, output_dir, level,inputDir){
   datatab <- readClonotypeSet(inputFolder, cores=2L, aligner="MiXCR", chain=chain, sampleinfo=NULL, keep.ambiguous=FALSE, keep.unproductive=FALSE, aa.th=8)
   if(!file.exists(paste(output_dir,"cdr3lenght",chain,".csv", sep=""))){
     # write sample info in a result file
-    lengthFreqDf<-lengthFreq(datatab)
-    lengthFreqDf$lib<-toupper(sub("()(-.*)","",lengthFreqDf$lib))
-    setnames(lengthFreqDf,"lib","id")
-    write.csv(lengthFreqDf,paste(output_dir,"cdr3lenght",cellType,chain,".csv", sep=""),row.names=FALSE)
+    # lengthFreqDf<-lengthFreq(datatab)
+    # lengthFreqDf$lib<-toupper(sub("()(-.*)","",lengthFreqDf$lib))
+    # setnames(lengthFreqDf,"lib","id")
+    # write.csv(lengthFreqDf,paste(output_dir,"cdr3lenght",cellType,chain,".csv", sep=""),row.names=FALSE)
     
   }else{
     stop(paste("file",output_dir,"cdr3lenght",cellType,chain,".csv"," already exist", sep=""))
@@ -54,7 +54,9 @@ process_file<-function(inputFolder,cellType, chain, output_dir, level,inputDir){
   # # write to a file
   if(!file.exists(paste(output_dir,"sample_info",cellType,chain,".csv", sep=""))){
     # write sample info in a result file
-    write.csv(datatab@sampleData,paste(output_dir,"sample_info",cellType,chain,".csv", sep=""))
+    print(output_dir)
+    file_name <-paste(output_dir,"sample_info",cellType,chain,".csv", sep="")
+    write.csv(datatab@sampleData,file_name)
 
   }else{
     stop(paste("file",output_dir,"sample_info",cellType,chain,".csv"," already exist", sep=""))

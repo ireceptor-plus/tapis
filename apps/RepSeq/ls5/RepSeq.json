@@ -51,7 +51,7 @@
       "id": "rearrangement_file",
       "details": {
         "label": "",
-        "description": "Rearrangement AIRR TSV file",
+        "description": "clonotype TSV file",
         "showAttribute": false
       },
       "semantics": {
