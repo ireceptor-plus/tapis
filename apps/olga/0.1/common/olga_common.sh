@@ -78,7 +78,8 @@ function run_olga_workflow() {
     initProvenance
 
     #Run compute_pgen on the CDR3 sequences file provided
-    singularity exec -B $PWD:/data ${singulariry_image} olga-compute_pgen --${model} -i /data/${cdr3_file} -o /data/output.tsv
+    echo singularity exec -B $PWD:/data ${singularity_image} olga-compute_pgen --${model} -i /data/${cdr3_file} -o /data/output.tsv
+    singularity exec -B $PWD:/data ${singularity_image} olga-compute_pgen --${model} -i /data/${cdr3_file} -o /data/output.tsv
     
     #List output
     ls -l    

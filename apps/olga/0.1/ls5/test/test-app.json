@@ -13,6 +13,6 @@
   "parameters": {
     "creator": "grojas",
     "single_flag": true,
-    "model": "TRB"
+    "model": "humanTRB"
   }
 }
