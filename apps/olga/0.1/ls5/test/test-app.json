@@ -8,7 +8,7 @@
   "archiveSystem": "data.vdjserver.org",
   "inputs": {
     "singularity_image": "agave://data.vdjserver.org//irplus/images/olga/olga-latest.sif",
-    "cdr3_file": "agave://data.vdjserver.org//irplus/apps/olga/0.1/common/test/example_seqs_CDR3_TRB.tsv"
+    "cdr3_file": "agave://data.vdjserver.org//irplus/apps/olga/0.1/ls5/test/example_seqs_CDR3_TRB.tsv"
   },
   "parameters": {
     "creator": "grojas",
