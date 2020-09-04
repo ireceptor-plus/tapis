@@ -7,7 +7,7 @@
   "archive": false,
   "archiveSystem": "data.vdjserver.org",
   "inputs": {
-    "singularity_image": "agave://data.vdjserver.org//irplus/images/cellranger4/cellranger4.sif",
+    "singularity_image": "agave://data.vdjserver.org//irplus/images/cellranger4/cellranger4-bcl.sif",
     "input_file": "agave://data.vdjserver.org//irplus/apps/cellranger/test_files/cellranger-tiny-bcl-1.2.0.tar.gz",
     "input_csv": "agave://data.vdjserver.org//irplus/apps/cellranger/test_files/cellranger-tiny-bcl-simple-1.2.0.csv"
   },
