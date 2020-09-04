@@ -1,4 +1,4 @@
-{
+ {
   "name":"test_olga",
   "appId": "irplus-olga-ls5-0.1-0.1",
   "batchQueue": "normal",
@@ -7,9 +7,12 @@
   "archive": false,
   "archiveSystem": "data.vdjserver.org",
   "inputs": {
-    "singularity_image": "agave://data.vdjserver.org//irplus/images/olga/olga-latest.sif"
+    "singularity_image": "agave://data.vdjserver.org//irplus/images/olga/olga-latest.sif",
+    "cdr3_file": "agave://data.vdjserver.org//irplus/apps/olga/0.1/common/test/example_seqs_CDR3_TRB.tsv" 
   },
   "parameters": {
-    "creator": "schristley"
+    "creator": "grojas",
+    "single_flag": true,
+    "model": "TRB"
   }
 }

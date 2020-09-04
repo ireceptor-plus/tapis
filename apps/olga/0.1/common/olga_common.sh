@@ -1,11 +1,11 @@
 #
-# Toy common functions
+# Olga common functions
 #
 # This script relies upon global variables
-# source toy_common.sh
+# source olga_common.sh
 #
-# Author: Scott Christley
-# Date: Aug 17, 2020
+# Author: Gema Rojas
+# Date: Sept 4, 2020
 # 
 
 # required global variables:
@@ -55,78 +55,31 @@ function initProvenance() {
 }
 
 # ----------------------------------------------------------------------------
-# Toy workflow
+# Olga workflow
 
 function print_versions() {
     echo "VERSIONS:"
     #echo "  $(DefineClones.py --version 2>&1)"
-    singularity exec ${singularity_image} versions report
+    #singularity exec ${singularity_image}
     echo -e "\nSTART at $(date)"
 }
 
 function print_parameters() {
     echo "Input files:"
     echo "singularity_image=${singularity_image}"
-    echo "rearrangement_file=${rearrangement_file}"
+    echo "cdr3_file=${cdr3_file}"
     echo ""
     echo "Application parameters:"
     echo "single_flag=${single_flag}"
-    echo "optional_number=${optional_number}"
-    echo "optional_enum=${optional_enum}"
+    echo "model=${model}"
 }
 
-function run_toy_workflow() {
+function run_olga_workflow() {
     initProvenance
 
-    # launcher job file
-    if [ -f joblist ]; then
-        echo "Warning: removing file 'joblist'.  That filename is reserved." 1>&2
-        rm joblist
-        touch joblist
-    fi
-    noArchive "joblist"
-
-    # for each file
-    # decompress if necessary
-    # generate commands to run
-    fileList=($rearrangement_file)
-    count=0
-    while [ "x${fileList[count]}" != "x" ]
-    do
-        file=${fileList[count]}
-        noArchive $file
-        expandfile $file
-        filename="${file##*/}"
-        fileBasename="${file%.*}" # file.airr.tsv -> file.airr
-        fileOutname=${fileBasename}.clones.tsv
-        noArchive $fileOutname
-
-        #ARGS="--format airr --act set --model ham --sym min --norm len --dist 0.165"
-        #if [ -n "$define_clones_mode" ]; then
-        #    ARGS="$ARGS --mode $define_clones_mode"
-        #fi
-        #if [ -n "$define_clones_nproc" ]; then
-        #    ARGS="$ARGS --nproc $define_clones_nproc"
-        #fi
-
-        # Define Clones
-        #if [[ $define_clones -eq 1 ]]; then
-        #    echo "DefineClones.py -d ${filename} -o ${fileOutname} $ARGS" >> joblist
-        #fi
-
-        count=$(( $count + 1 ))
-    done
-
-    # check number of jobs to be run
-    numJobs=$(cat joblist | wc -l)
-    export LAUNCHER_PPN=$LAUNCHER_LOW_PPN
-    if [ $numJobs -lt $LAUNCHER_PPN ]; then
-        export LAUNCHER_PPN=$numJobs
-    fi
-
-    # run launcher
-    #$LAUNCHER_DIR/paramrun
-
-    ls -l
+    #Run compute_pgen on the CDR3 sequences file provided
+    singularity exec -B $PWD:/data ${singulariry_image} /usr/local/bin/olga-compute_pgen --${model} -i ${cdr3_file} -o output.tsv
     
+    #List output
+    ls -l    
 }

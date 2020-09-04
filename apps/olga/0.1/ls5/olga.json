@@ -31,12 +31,43 @@
         "description": "Singularity image file",
         "showAttribute": false
       },
-      "irrr_file": {
+      "semantics": {
         "minCardinality": 1,
         "maxCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/mime/application/Json"
+        ],
         "fileTypes": [
           "text-0"
         ]
+      },
+      "value": {
+        "default": "",
+        "visible": true,
+        "required": true
+      }
+    },
+    {
+      "id": "cdr3_file",
+      "details": {
+        "label": "",
+        "description": "CDR3 sequence tsv file",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/mime/application/Json"
+        ],
+        "fileTypes": [
+          "text-0"
+        ]
+      },
+      "value": {
+        "default": "",
+        "visible": true,
+        "required": true
       }
     }
   ],
@@ -45,7 +76,7 @@
       "id": "creator",
       "value": {
         "visible": true,
-        "required": false,
+        "required": true,
         "type": "string",
         "default": ""
       },
@@ -65,7 +96,7 @@
       "id": "single_flag",
       "value": {
         "visible": true,
-        "required": false,
+        "required": true,
         "type": "bool",
         "order": 0,
         "enquote": false,
@@ -86,23 +117,24 @@
           "xsd:boolean"
         ]
       }
-    },
+    }, 
     {
-      "id": "optional_number",
+      "id": "model",
       "value": {
         "visible": true,
-        "required": false,
-        "type": "number"
+        "required": true,
+        "type": "string",
+        "default": ""
       },
       "details": {
-        "label": "",
-        "description": "Optional number parameter"
+        "label": "model",
+        "description": "VDJ generative model to calculate the probabilities from."
       },
       "semantics": {
-        "minCardinality": 0,
+        "minCardinality": 1,
         "maxCardinality": 1,
         "ontology": [
-          "xsd:integer"
+          "xsd:string"
         ]
       }
     }

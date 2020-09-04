@@ -9,12 +9,13 @@
 
 # input files
 singularity_image="${singularity_image}"
-rearrangement_file="${rearrangement_file}"
+cdr3_file="${cdr3_file}"
 
 # application parameters
 single_flag=${single_flag}
-optional_number="${optional_number}"
-optional_enum="${optional_enum}"
+model=${model}
+#optional_number="${optional_number}"
+#optional_enum="${optional_enum}"
 
 # Agave info
 AGAVE_JOB_ID=${AGAVE_JOB_ID}
@@ -56,7 +57,7 @@ export JOB_ERROR=0
 
 print_parameters
 print_versions
-run_toy_workflow
+run_olga_workflow
 
 # End
 printf "DONE at $(date)\n\n"
