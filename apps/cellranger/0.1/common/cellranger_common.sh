@@ -90,7 +90,7 @@ function run_cellranger_workflow() {
 
     singularity exec cellranger4-bcl.sif cellranger mkfastq --id=tutorial_walk_through \
     --run=${fileBasename%.tar.gz} \
-    --csv=cellranger-tiny-bcl-simple-1.2.0.csv
+    --csv=${input_csv}
 
         #ARGS="--format airr --act set --model ham --sym min --norm len --dist 0.165"
         #if [ -n "$define_clones_mode" ]; then
