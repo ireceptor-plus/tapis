@@ -68,6 +68,7 @@ function print_parameters() {
     echo "Input files:"
     echo "singularity_image=${singularity_image}"
     echo "input_file=${input_file}"
+    echo "input_file=${input_csv}"
     echo ""
     echo "Application parameters:"
     echo "single_flag=${single_flag}"
@@ -87,7 +88,7 @@ function run_cellranger_workflow() {
     fi
     noArchive "joblist"
 
-    singularity exec cellranger4.sif cellranger mkfastq --id=tutorial_walk_through \
+    singularity exec cellranger4-bcl.sif cellranger mkfastq --id=tutorial_walk_through \
     --run=${fileBasename%.tar.gz} \
     --csv=cellranger-tiny-bcl-simple-1.2.0.csv
 
