@@ -29,7 +29,7 @@ tapis files list agave:///irplus/apps/$TOOL/$VER/$SYSTEM
 
 # upload test assets
 tapis files upload agave:///irplus/apps/$TOOL/$VER/$SYSTEM/test test/test.sh
-tapis files upload agave:///irplus/apps/$TOOL/$VER/$SYSTEM/test ../common/test/IGH_SRR1383450.airr.tsv.gz
+# tapis files upload agave:///irplus/apps/$TOOL/$VER/$SYSTEM/test ../common/test/IGH_SRR1383450.airr.tsv.gz
 tapis files list agave:///irplus/apps/$TOOL/$VER/$SYSTEM/test
 
 #files-upload -F test/test.sh /irplus/apps/$TOOL/$VER/$SYSTEM/test

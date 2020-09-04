@@ -48,10 +48,34 @@
       }
     },
     {
-      "id": "rearrangement_file",
+      "id": "input_file",
       "details": {
         "label": "",
-        "description": "Rearrangement AIRR TSV file",
+        "description": "Test file cellranger-tiny-bcl-1.2.0.tar.gz",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/mime/application/Json"
+        ],
+        "fileTypes": [
+          "text-0"
+        ]
+      },
+      "value": {
+        "default": "",
+        "visible": true,
+        "required": true
+      }
+
+    },
+    {
+      "id": "input_csv",
+      "details": {
+        "label": "",
+        "description": "csv file cellranger-tiny-bcl-simple-1.2.0.csv",
         "showAttribute": false
       },
       "semantics": {

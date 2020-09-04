@@ -9,7 +9,8 @@
 
 # input files
 singularity_image="${singularity_image}"
-input_folder="${input_folder}"
+input_file="${input_file}"
+input_csv="${input_csv}"
 
 # application parameters
 single_flag=${single_flag}
@@ -22,8 +23,10 @@ AGAVE_JOB_NAME=${AGAVE_JOB_NAME}
 AGAVE_LOG_NAME=${AGAVE_JOB_NAME}-${AGAVE_JOB_ID}
 
 # ----------------------------------------------------------------------------
-# unpack local executables
-tar zxf binaries.tgz
+# unpack tiny test folder
+tar -zxvf ${input_file}
+#cellranger-tiny-bcl-1.2.0.tar.gz
+
 
 # modules
 module load python3
