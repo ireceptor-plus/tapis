@@ -99,3 +99,8 @@ docker run -v $PWD/tapis-token:/root/.agave -v $PWD/tapis:/work -it ireceptorplu
 # access local app development
 cd /work
 ```
+
+## Hackathon Notes
+
+The hackathon of Sep 2-4 provided a tutorial presentation and hands-on session for app
+development. Here are some [notes](20200902_Hackathon_Notes.md) and a [Jupyter notebook](20200902_Hackathon_Notes.ipynb) put together by Marco Amaro Oliveira.
