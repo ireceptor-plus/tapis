@@ -59,7 +59,6 @@ function initProvenance() {
 
 function print_versions() {
     echo "VERSIONS:"
-    #echo "  $(DefineClones.py --version 2>&1)"
     singularity exec ${singularity_image} versions report
     echo -e "\nSTART at $(date)"
 }
@@ -67,6 +66,7 @@ function print_versions() {
 function print_parameters() {
     echo "Input files:"
     echo "singularity_image=${singularity_image}"
+    echo "metadata_file=${metadata_file}"
     echo "rearrangement_file=${rearrangement_file}"
     echo ""
     echo "Application parameters:"

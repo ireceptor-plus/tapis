@@ -9,6 +9,7 @@
 
 # input files
 singularity_image="${singularity_image}"
+metadata_file="${metadata_file}"
 rearrangement_file="${rearrangement_file}"
 
 # application parameters

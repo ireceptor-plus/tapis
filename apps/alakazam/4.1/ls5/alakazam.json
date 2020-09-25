@@ -48,6 +48,29 @@
       }
     },
     {
+      "id": "metadata_file",
+      "details": {
+        "label": "",
+        "description": "AIRR Repertoire metadata file",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/mime/application/Json"
+        ],
+        "fileTypes": [
+          "text-0"
+        ]
+      },
+      "value": {
+        "default": "",
+        "visible": true,
+        "required": true
+      }
+    },
+    {
       "id": "rearrangement_file",
       "details": {
         "label": "",
