@@ -79,7 +79,7 @@ tapis systems list
 tapis apps list
 
 # list files in the irplus directory (you need permission to view)
-tapis files list agave:///irplus
+tapis files list agave://data.vdjserver.org/irplus
 ```
 
 ## App Development
