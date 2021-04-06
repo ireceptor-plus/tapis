@@ -31,6 +31,6 @@ if (!("DB" %in% names(opt))) {
 # Read rearrangement data
 db <- airr::read_rearrangement(opt$DB)
 
-aa_db <- aminoAcidProperties(db)
+aa_db <- aminoAcidProperties(db, seq="junction_aa", label="junction")
 
 airr::write_rearrangement(aa_db, 'aa_properties.airr.tsv')
