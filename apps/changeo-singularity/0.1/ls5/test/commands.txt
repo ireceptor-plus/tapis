@@ -1,0 +1,2 @@
+tapis jobs list
+tapis jobs status cf4cc047-613d-4dea-9315-a916745e711f-007
