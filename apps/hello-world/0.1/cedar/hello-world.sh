@@ -8,13 +8,13 @@
 # These get set by Tapis
 
 # input files
-singularity_image="${singularity_image}"
-rearrangement_file="${rearrangement_file}"
+###singularity_image="${singularity_image}"
+###rearrangement_file="${rearrangement_file}"
 
 # application parameters
-single_flag=${single_flag}
-optional_number="${optional_number}"
-optional_enum="${optional_enum}"
+###single_flag=${single_flag}
+###optional_number="${optional_number}"
+###optional_enum="${optional_enum}"
 
 # Agave info
 AGAVE_JOB_ID=${AGAVE_JOB_ID}
@@ -64,7 +64,7 @@ echo "Hello World from Tapis"
 printf "DONE at $(date)\n\n"
 
 # remove binaries before archiving 
-rm -rf bin lib
+###rm -rf bin lib
 
 if [[ $JOB_ERROR -eq 1 ]]; then
     ${AGAVE_JOB_CALLBACK_FAILURE}
