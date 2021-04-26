@@ -60,6 +60,9 @@ echo "Hello World from Tapis"
 ###print_versions
 ###run_toy_workflow
 
+echo "sleeping"
+sleep 120
+
 # End
 printf "DONE at $(date)\n\n"
 

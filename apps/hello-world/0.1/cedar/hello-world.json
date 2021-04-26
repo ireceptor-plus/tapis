@@ -15,11 +15,5 @@
   "deploymentPath": "/tapis/apps/hello-world/0.1/cedar/",
   "deploymentSystem": "cedar.computecanada.ca-storage-ireceptorgw",
   "templatePath": "hello-world.sh",
-  "testPath": "test/test.sh",
-  "ontology": [
-    "http://sswapmeet.sswap.info/agave/apps/Application"
-  ],
-  "modules": [
-    "purge"
-  ]
+  "testPath": "test/test.sh"
 }
