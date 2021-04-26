@@ -4,6 +4,6 @@
   "batchQueue": "default",
   "maxRunTime": "01:00:00",
   "nodeCount": 1,
-  "archive": false,
+  "archive": true,
   "archiveSystem": "cedar.computecanada.ca-storage-ireceptorgw"
 }
