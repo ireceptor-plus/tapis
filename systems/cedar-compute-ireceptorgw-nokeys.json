@@ -1,0 +1,47 @@
+{
+    "id": "cedar.computecanada.ca-compute-ireceptorgw",
+    "name": "iReceptor Compute (Cedar - Compute Canada)",
+    "status": "UP",
+    "type": "EXECUTION",
+    "description": "iReceptor compute resource on Compute Canada cedar ARC platform",
+    "site": "cedar.computecanada.ca",
+    "executionType" : "HPC",
+    "scheduler" : "SLURM",
+    "environment" : null,
+    "startupScript" : null,
+    "maxSystemJobs" : 10,
+    "maxSystemJobsPerUser" : 10,
+    "scratchDir":"/scratch",
+    "workDir":"/scratch",
+    "login" : {
+        "host" : "cedar.computecanada.ca",
+        "port" : 22,
+        "protocol" : "SSH",
+        "auth" : {
+            "username": "ireceptorgw",
+            "type": "SSHKEYS"
+        }
+    },
+    "storage": {
+        "host": "cedar.computecanada.ca",
+        "port": 22,
+        "protocol": "SFTP",
+        "rootDir": "/project/6008066/ireceptorgw",
+        "homeDir": "/users",
+        "auth": {
+            "username": "ireceptorgw",
+            "type": "SSHKEYS"
+        }
+    },
+    "queues" : [ {
+      "name" : "default",
+      "default" : true,
+      "maxJobs" : 10,
+      "maxUserJobs" : 10,
+      "maxNodes" : 1,
+      "maxProcessorsPerNode" : 8,
+      "maxRequestedTime": "48:00:00",
+      "maxMemoryPerNode" : "64GB"
+    } ]
+}
+
