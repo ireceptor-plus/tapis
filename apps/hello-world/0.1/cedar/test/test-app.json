@@ -5,9 +5,5 @@
   "maxRunTime": "01:00:00",
   "nodeCount": 1,
   "archive": false,
-  "archiveSystem": "cedar.computecanada.ca-storage-ireceptorgw",
-  "parameters": {
-    "creator": "fred",
-    "single_flag": true
-  }
+  "archiveSystem": "cedar.computecanada.ca-storage-ireceptorgw"
 }
