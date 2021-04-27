@@ -1,17 +1,17 @@
 {
   "name":"test_toy",
-  "appId": "irplus-toy-ls5-schristley-0.1",
-  "batchQueue": "normal",
+  "appId": "irplus-toy-cedar-ireceptorgw-0.1",
+  "batchQueue": "default",
   "maxRunTime": "01:00:00",
   "nodeCount": 1,
   "archive": false,
-  "archiveSystem": "data.vdjserver.org",
+  "archiveSystem": "cedar.computecanada.ca-storage-ireceptorgw",
   "inputs": {
-    "singularity_image": "agave://data.vdjserver.org//irplus/images/immcantation_suite-4.1.0.sif",
-    "rearrangement_file": "agave://data.vdjserver.org//irplus/apps/toy/schristley/ls5/test/IGH_SRR1383450.airr.tsv.gz"
+    "singularity_image": "agave://cedar.computecanada.ca-compute-ireceptorgw/singularity/immcantation/immcantation_suite-4.1.0.sif",
+    "rearrangement_file": "agave://cedar.computecanada.ca-compute-ireceptorgw/data/S-CoV10_M0_Sort1_B_VDJ_LC_filtered.tsv-IGK.tsv"
   },
   "parameters": {
-    "creator": "schristley",
+    "creator": "bcorrie",
     "single_flag": true
   }
 }
