@@ -26,7 +26,7 @@ AGAVE_LOG_NAME=${AGAVE_JOB_NAME}-${AGAVE_JOB_ID}
 ###tar zxf binaries.tgz
 
 # modules
-module load python
+#module load python
 module load singularity
 
 #PYTHON=python3
