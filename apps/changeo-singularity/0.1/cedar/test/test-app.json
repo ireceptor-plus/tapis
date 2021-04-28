@@ -4,6 +4,7 @@
   "batchQueue": "default",
   "maxRunTime": "01:00:00",
   "nodeCount": 1,
+  "memoryPerNode": "8.0",
   "archive": false,
   "archiveSystem": "cedar.computecanada.ca-storage-ireceptorgw",
   "inputs": {
@@ -12,6 +13,7 @@
   },
   "parameters": {
     "creator": "bcorrie",
+    "airr_file": "S-CoV10_M0_Sort1_B_VDJ_LC_filtered.tsv-IGK.tsv",
     "single_flag": true
   }
 }

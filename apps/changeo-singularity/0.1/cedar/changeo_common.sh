@@ -69,10 +69,12 @@ function print_parameters() {
 function run_workflow() {
     # Do some provenance - mostly a placeholder for now.
     initProvenance
+    echo "Run Workflow"
 
     # Run DefineClones.py on rearrangement file provided.
-    singularity exec -B $PWD:/data ${singularity_image} DefineClones.py -d ${rearrangement_file}
+    singularity exec -B $PWD:/data ${singularity_image} DefineClones.py -d ${airr_file}
 
     # List the files in the directory produced by the above job (for provenance).
     ls -l
+    echo "Done Workflow"
 }

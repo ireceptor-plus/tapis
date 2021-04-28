@@ -13,6 +13,7 @@ rearrangement_file="${rearrangement_file}"
 
 # application parameters
 single_flag=${single_flag}
+airr_file=${airr_file}
 optional_number="${optional_number}"
 optional_enum="${optional_enum}"
 

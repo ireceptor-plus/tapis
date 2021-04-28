@@ -5,6 +5,7 @@
   "defaultQueue": "default",
   "defaultNodeCount": 1,
   "defaultProcessorsPerNode": 1,
+  "defaultMemoryPerNode": "8.0",
   "defaultRequestedTime": "1:00:00",
   "shortDescription": "Change-o (singularity) app on cedar.computecanada.ca",
   "longDescription": "iReceptor+ Change-O app using singularity image on Compute Canada's cedar ARC platform",
@@ -12,7 +13,7 @@
   "executionSystem": "cedar.computecanada.ca-compute-ireceptorgw",
   "parallelism": "PARALLEL",
   "checkpointable": false,
-  "deploymentPath": "/tapis/apps/toy/0.1/cedar/",
+  "deploymentPath": "/tapis/apps/changeo-singularity/0.1/cedar/",
   "deploymentSystem": "cedar.computecanada.ca-storage-ireceptorgw",
   "templatePath": "changeo.sh",
   "testPath": "test/test.sh",
@@ -82,6 +83,26 @@
       "details": {
         "label": "Creator",
         "description": "Username that created this job."
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:string"
+        ]
+      }
+    },
+    {
+      "id": "airr_file",
+      "value": {
+        "visible": true,
+        "required": true,
+        "type": "string",
+        "default": ""
+      },
+      "details": {
+        "label": "Local AIRR file name",
+        "description": "Local AIRR file name after download."
       },
       "semantics": {
         "minCardinality": 1,
