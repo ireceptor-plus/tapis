@@ -21,6 +21,8 @@ optional_enum="${optional_enum}"
 AGAVE_JOB_ID=${AGAVE_JOB_ID}
 AGAVE_JOB_NAME=${AGAVE_JOB_NAME}
 AGAVE_LOG_NAME=${AGAVE_JOB_NAME}-${AGAVE_JOB_ID}
+AGAVE_JOB_PROCESSORS_PER_NODE=${AGAVE_JOB_PROCESSORS_PER_NODE}
+AGAVE_JOB_MEMORY_PER_NODE=${AGAVE_JOB_MEMORY_PER_NODE}
 
 # ----------------------------------------------------------------------------
 # modules
@@ -31,6 +33,9 @@ source ./changeo_common.sh
 
 # Start
 printf "START at $(date)\n\n"
+printf "PROCS = ${AGAVE_JOB_PROCESSORS_PER_NODE}\n\n"
+printf "MEM = ${AGAVE_JOB_MEMORY_PER_NODE}\n\n"
+
 
 # If you want to tell Tapis that the job failed
 export JOB_ERROR=0

@@ -72,7 +72,7 @@ function run_workflow() {
     echo "Run Workflow"
 
     # Run DefineClones.py on rearrangement file provided.
-    singularity exec -B $PWD:/data ${singularity_image} DefineClones.py -d /data/${airr_file}
+    singularity exec -B $PWD:/data ${singularity_image} DefineClones.py --nproc ${AGAVE_JOB_PROCESSORS_PER_NODE} -d /data/${airr_file}
 
     # List the files in the directory produced by the above job (for provenance).
     ls -l

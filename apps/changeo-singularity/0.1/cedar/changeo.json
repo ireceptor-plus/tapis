@@ -93,26 +93,6 @@
       }
     },
     {
-      "id": "airr_file",
-      "value": {
-        "visible": true,
-        "required": true,
-        "type": "string",
-        "default": ""
-      },
-      "details": {
-        "label": "Local AIRR file name",
-        "description": "Local AIRR file name after download."
-      },
-      "semantics": {
-        "minCardinality": 1,
-        "maxCardinality": 1,
-        "ontology": [
-          "xsd:string"
-        ]
-      }
-    },
-    {
       "id": "single_flag",
       "value": {
         "visible": true,
