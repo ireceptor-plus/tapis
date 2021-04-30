@@ -5,7 +5,7 @@
   "defaultQueue": "default",
   "defaultNodeCount": 1,
   "defaultProcessorsPerNode": 1,
-  "defaultMemoryPerNode": "8.0",
+  "defaultMemoryPerNode": "8GB",
   "defaultRequestedTime": "1:00:00",
   "shortDescription": "Change-o (singularity) app on cedar.computecanada.ca",
   "longDescription": "iReceptor+ Change-O app using singularity image on Compute Canada's cedar ARC platform",
