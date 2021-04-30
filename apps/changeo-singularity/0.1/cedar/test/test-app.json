@@ -4,7 +4,8 @@
   "batchQueue": "default",
   "maxRunTime": "01:00:00",
   "nodeCount": 1,
-  "memoryPerNode": "8.0",
+  "processorsPerNode": 2,
+  "memoryPerNode": "4GB",
   "archive": false,
   "archiveSystem": "cedar.computecanada.ca-storage-ireceptorgw",
   "inputs": {
