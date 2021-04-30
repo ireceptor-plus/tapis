@@ -51,7 +51,7 @@ function initProvenance() {
 
 function print_versions() {
     echo "VERSIONS:"
-    singularity exec ${singularity_image} vdjbase_pipeline -v
+    singularity exec ${singularity_image} vdjbase-pipeline -v
     echo -e "\nSTART at $(date)"
 }
 
@@ -72,7 +72,7 @@ function run_workflow() {
     echo "Run Workflow"
 
     # Run DefineClones.py on rearrangement file provided.
-    singularity exec -e -B $PWD:/data ${singularity_image} vdjbase-pipeline -t ${AGAVE_JOB_PROCESSORS_PER_NODE} -s ${rearrangement_file} -f /data/${rearrangement_file} -o $PWD
+    singularity exec -e -B ${PWD}:/data ${singularity_image} vdjbase-pipeline -t ${AGAVE_JOB_PROCESSORS_PER_NODE} -s ${rearrangement_file} -f /data/${rearrangement_file} -o ${PWD}
 
     # List the files in the directory produced by the above job (for provenance).
     ls -l
