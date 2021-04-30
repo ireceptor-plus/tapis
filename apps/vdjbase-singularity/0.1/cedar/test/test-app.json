@@ -14,6 +14,7 @@
   },
   "parameters": {
     "creator": "bcorrie",
+    "sample_name": "S-CoV1_M0_Sort1_B_VDJ_HC",
     "single_flag": true
   }
 }

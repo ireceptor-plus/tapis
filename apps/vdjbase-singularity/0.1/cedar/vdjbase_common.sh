@@ -61,9 +61,7 @@ function print_parameters() {
     echo "rearrangement_file=${rearrangement_file}"
     echo ""
     echo "Application parameters:"
-    echo "single_flag=${single_flag}"
-    echo "optional_number=${optional_number}"
-    echo "optional_enum=${optional_enum}"
+    echo "sample_name=${sample_name}"
 }
 
 function run_workflow() {
@@ -72,7 +70,7 @@ function run_workflow() {
     echo "Run Workflow"
 
     # Run DefineClones.py on rearrangement file provided.
-    singularity exec -e -B ${PWD}:/data ${singularity_image} vdjbase-pipeline -f /data/${rearrangement_file} -s hello -t ${AGAVE_JOB_PROCESSORS_PER_NODE} -o /data
+    singularity exec -e -B ${PWD}:/data ${singularity_image} vdjbase-pipeline -f /data/${rearrangement_file} -s ${sample_name} -t ${AGAVE_JOB_PROCESSORS_PER_NODE} -o /data
 
     # List the files in the directory produced by the above job (for provenance).
     ls -l

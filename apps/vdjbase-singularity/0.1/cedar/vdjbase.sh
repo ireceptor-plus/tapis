@@ -12,6 +12,7 @@ singularity_image="${singularity_image}"
 rearrangement_file="${rearrangement_file}"
 
 # application parameters
+sample_name=${sample_name}
 single_flag=${single_flag}
 airr_file=${airr_file}
 optional_number="${optional_number}"
