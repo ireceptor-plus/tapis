@@ -13,10 +13,6 @@ rearrangement_file="${rearrangement_file}"
 
 # application parameters
 sample_name=${sample_name}
-single_flag=${single_flag}
-airr_file=${airr_file}
-optional_number="${optional_number}"
-optional_enum="${optional_enum}"
 
 # Agave info
 AGAVE_JOB_ID=${AGAVE_JOB_ID}
