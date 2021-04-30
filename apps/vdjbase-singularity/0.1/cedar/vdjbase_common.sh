@@ -51,7 +51,7 @@ function initProvenance() {
 
 function print_versions() {
     echo "VERSIONS:"
-    singularity exec -e ${singularity_image} vdjbase-pipeline -v
+    #singularity exec -e ${singularity_image} vdjbase-pipeline -v
     echo -e "\nSTART at $(date)"
 }
 
