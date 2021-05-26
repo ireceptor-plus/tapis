@@ -18,7 +18,7 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                              help="Tabulated data file, in AIRR format (TSV)."),
                  make_option(c("-t", "--trim"), dest="TRIM", default=FALSE,
                              help=paste("Trim conserved residues.",
-                                        "\n\t\tDefaults to FALSE.")),
+                                        "\n\t\tDefaults to FALSE.")))
 
 # Parse arguments
 opt <- parse_args(OptionParser(option_list=opt_list))
