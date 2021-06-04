@@ -58,7 +58,7 @@ function initProvenance() {
 
 function print_versions() {
     echo "VERSIONS:"
-    echo "  $(DefineClones.py --version 2>&1)"
+    singularity exec ${singularity_image} versions report
     echo -e "\nSTART at $(date)"
 }
 
@@ -69,11 +69,7 @@ function print_parameters() {
     echo "rearrangement_file=${rearrangement_file}"
     echo ""
     echo "Application parameters:"
-    echo "assign_clones_flag=${assign_clones_flag}"
-    if [[ $assign_clones_flag -eq 1 ]]; then
-        #echo "define_clones_nproc=${define_clones_nproc}"
-        #echo "define_clones_mode=${define_clones_mode}"
-    fi
+    echo "clone_tool=${clone_tool}"
 }
 
 function run_assign_clones() {
@@ -102,17 +98,10 @@ function run_assign_clones() {
         fileOutname=${fileBasename}.clones.tsv
         noArchive $fileOutname
 
-        #ARGS="--format airr --act set --model ham --sym min --norm len --dist 0.165"
-        #if [ -n "$define_clones_mode" ]; then
-        #    ARGS="$ARGS --mode $define_clones_mode"
-        #fi
-        #if [ -n "$define_clones_nproc" ]; then
-        #    ARGS="$ARGS --nproc $define_clones_nproc"
-        #fi
-
         # Assign Clones
-        if [[ $assign_clones_flag -eq 1 ]]; then
-            echo "DefineClones.py -d ${filename} -o ${fileOutname} $ARGS" >> joblist
+        if [[ "$clone_tool" == "changeo" ]] ; then
+            #echo "export bash changeo_clones.sh ${filename}" >> joblist
+            echo "singularity exec ${singularity_image} bash changeo_clones.sh ${filename}" >> joblist
         fi
 
         count=$(( $count + 1 ))
