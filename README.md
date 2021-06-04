@@ -92,6 +92,8 @@ an editor outside of docker.
 ```
 # clone the repository
 git clone https://github.com/ireceptor-plus/tapis.git
+cd tapis
+git submodule update --init --recursive
 
 # run docker with both your tapis token and source directories mounted
 docker run -v $PWD/tapis-token:/root/.agave -v $PWD/tapis:/work -it ireceptorplus/tapis bash
