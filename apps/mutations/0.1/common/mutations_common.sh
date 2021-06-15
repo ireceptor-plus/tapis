@@ -1,19 +1,14 @@
 #
-# ChangeO common functions
-#
-# This script relies upon global variables
-# source changeo_common.sh
-#
-# VDJServer Analysis Portal
-# VDJServer Tapis applications
-# https://vdjserver.org
-#
+# Mutational analysis common functions
 # Part of the iReceptor+ platform
 #
-# Copyright (C) 2021 The University of Texas Southwestern Medical Center
 # Author: Scott Christley
-# Date: Feb 19, 2020
-# 
+# Copyright (C) 2021 The University of Texas Southwestern Medical Center
+# Date: Jun 4, 2021
+#
+# This script relies upon global variables
+# source mutations_common.sh
+#
 
 # required global variables:
 # PYTHON
@@ -22,7 +17,7 @@
 # The agave app input and parameters
 
 # the app
-export APP_NAME=changeo
+export APP_NAME=mutations
 
 # ----------------------------------------------------------------------------
 function expandfile () {
@@ -76,19 +71,26 @@ function print_parameters() {
     echo "rearrangement_file=${rearrangement_file}"
     echo ""
     echo "Application parameters:"
-    echo "clone_tool=${clone_tool}"
+    echo "mutation_tool=${mutation_tool}"
 }
 
-function run_assign_clones() {
+function run_mutational_analysis() {
     initProvenance
 
-    # launcher job file
-    if [ -f joblist ]; then
-        echo "Warning: removing file 'joblist'.  That filename is reserved." 1>&2
-        rm joblist
-        touch joblist
+    # launcher job files
+    if [ -f joblist-germline ]; then
+        echo "Warning: removing file 'joblist-germline'.  That filename is reserved." 1>&2
+        rm joblist-germline
+        touch joblist-germline
     fi
-    noArchive "joblist"
+    noArchive "joblist-germline"
+
+    if [ -f joblist-mutations ]; then
+        echo "Warning: removing file 'joblist-mutations'.  That filename is reserved." 1>&2
+        rm joblist-mutations
+        touch joblist-mutations
+    fi
+    noArchive "joblist-mutations"
 
     # for each file
     # decompress if necessary
@@ -101,21 +103,39 @@ function run_assign_clones() {
         noArchive $file
         expandfile $file
         filename="${file##*/}"
-        fileBasename="${file%.*}" # file.airr.tsv -> file.airr
-        fileOutname=${fileBasename}.clones.tsv
-        noArchive $fileOutname
+        fileExtname="${file%.*}" # file.clone.airr.tsv -> file.clone.airr
+        airrFilename="${fileExtname%.*}" # file.clone.airr -> file.clone
+        baseFilename="${airrFilename%.*}" # file.clone -> file
+        echo $baseFilename
 
-        # Assign Clones
-        if [[ "$clone_tool" == "changeo" ]] ; then
-            #echo "export bash changeo_clones.sh ${filename}" >> joblist
-            echo "singularity exec ${singularity_image} bash changeo_clones.sh ${filename}" >> joblist
+        # Mutational analysis with Alakazam/Shazam
+        if [[ "$mutation_tool" == "alakazam" ]] ; then
+            echo "singularity exec ${singularity_image} bash create_germlines.sh ${filename} ${baseFilename}" >> joblist-germline
+            germFilename="${baseFilename}.germ.airr.tsv"
+
+            echo "singularity exec ${singularity_image} bash mutational_analysis.sh ${germFilename} ${baseFilename}" >> joblist-mutations
         fi
 
         count=$(( $count + 1 ))
     done
 
     # check number of jobs to be run
-    numJobs=$(cat joblist | wc -l)
+    export LAUNCHER_JOB_FILE=joblist-germline
+    numJobs=$(cat $LAUNCHER_JOB_FILE | wc -l)
+    export LAUNCHER_PPN=$LAUNCHER_LOW_PPN
+    if [ $numJobs -lt $LAUNCHER_PPN ]; then
+        export LAUNCHER_PPN=$numJobs
+    fi
+
+    # run launcher
+    $LAUNCHER_DIR/paramrun
+
+    # generate germline report
+    #singularity exec ${singularity_image} python3 ./germline_report.py ${metadata_file}
+
+    # check number of jobs to be run
+    export LAUNCHER_JOB_FILE=joblist-mutations
+    numJobs=$(cat $LAUNCHER_JOB_FILE | wc -l)
     export LAUNCHER_PPN=$LAUNCHER_LOW_PPN
     if [ $numJobs -lt $LAUNCHER_PPN ]; then
         export LAUNCHER_PPN=$numJobs

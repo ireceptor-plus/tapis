@@ -1,0 +1,3 @@
+[submodule "vdjserver"]
+	path = vdjserver
+	url = https://bitbucket.org/vdjserver/vdjserver-agave.git

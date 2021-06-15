@@ -24,9 +24,10 @@ tapis files mkdir agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM test
 # upload app assets
 tapis files upload agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM assign-clones.sh
 tapis files upload agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM assign-clones.json
-tapis files upload agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM ../common/find_threshold.R
-tapis files upload agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM ../common/parse_changeo.py
-tapis files upload agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM ../common/changeo_clones.sh
+tapis files upload agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM ../../../../vdjserver/common/common_functions.sh
+tapis files upload agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM ../../../../vdjserver/common/parse_changeo.py
+tapis files upload agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM ../../../../vdjserver/common/changeo_clones.sh
+tapis files upload agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM ../../../../vdjserver/common/find_threshold.R
 tapis files upload agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM ../common/clones_common.sh
 tapis files list agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM
 
