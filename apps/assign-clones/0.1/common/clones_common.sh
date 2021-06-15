@@ -4,6 +4,13 @@
 # This script relies upon global variables
 # source changeo_common.sh
 #
+# VDJServer Analysis Portal
+# VDJServer Tapis applications
+# https://vdjserver.org
+#
+# Part of the iReceptor+ platform
+#
+# Copyright (C) 2021 The University of Texas Southwestern Medical Center
 # Author: Scott Christley
 # Date: Feb 19, 2020
 # 
