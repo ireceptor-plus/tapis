@@ -1,8 +1,8 @@
 #
-# ChangeO common functions
+# Assign clones common functions
 #
 # This script relies upon global variables
-# source changeo_common.sh
+# source clones_common.sh
 #
 # VDJServer Analysis Portal
 # VDJServer Tapis applications
@@ -22,36 +22,10 @@
 # The agave app input and parameters
 
 # the app
-export APP_NAME=changeo
+export APP_NAME=assign-clones
 
-# ----------------------------------------------------------------------------
-function expandfile () {
-    fileBasename="${1%.*}" # file.txt.gz -> file.txt
-    fileExtension="${1##*.}" # file.txt.gz -> gz
-
-    if [ ! -f $1 ]; then
-        echo "Could not find input file $1" 1>&2
-        exit 1
-    fi
-
-    if [ "$fileExtension" == "gz" ]; then
-        gunzip $1
-        export file=$fileBasename
-        # don't archive the intermediate file
-    elif [ "$fileExtension" == "bz2" ]; then
-        bunzip2 $1
-        export file=$fileBasename
-    elif [ "$fileExtension" == "zip" ]; then
-        unzip -o $1
-        export file=$fileBasename
-    else
-        export file=$1
-    fi
-}
-
-function noArchive() {
-    echo $1 >> .agave.archive
-}
+# bring in common functions
+source ./common_functions.sh
 
 # ----------------------------------------------------------------------------
 # Analysis provenance
@@ -100,15 +74,14 @@ function run_assign_clones() {
         file=${fileList[count]}
         noArchive $file
         expandfile $file
-        filename="${file##*/}"
-        fileBasename="${file%.*}" # file.airr.tsv -> file.airr
-        fileOutname=${fileBasename}.clones.tsv
+        filename="${file##*/}" # foo/bar/file.airr.tsv -> file.airr.tsv
+        fileBasename="${file%%.*}" # file.airr.tsv -> file
         noArchive $fileOutname
 
         # Assign Clones
         if [[ "$clone_tool" == "changeo" ]] ; then
             #echo "export bash changeo_clones.sh ${filename}" >> joblist
-            echo "singularity exec ${singularity_image} bash changeo_clones.sh ${filename}" >> joblist
+            echo "singularity exec ${singularity_image} bash changeo_clones.sh ${file} ${fileBasename}" >> joblist
         fi
 
         count=$(( $count + 1 ))

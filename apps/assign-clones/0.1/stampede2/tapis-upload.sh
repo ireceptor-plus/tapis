@@ -1,4 +1,12 @@
 #
+# Tapis upload script
+# Part of the iReceptor+ platform
+#
+# Author: Scott Christley
+# Copyright (C) 2021 The University of Texas Southwestern Medical Center
+# Date: Jun 16, 2021
+#
+
 TOOL=assign-clones
 SYSTEM=stampede2
 VER=0.1
