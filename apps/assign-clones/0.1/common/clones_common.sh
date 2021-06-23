@@ -46,6 +46,7 @@ function print_versions() {
 function print_parameters() {
     echo "Input files:"
     echo "singularity_image=${singularity_image}"
+    echo "repcalc_image=${repcalc_image}"
     echo "metadata_file=${metadata_file}"
     echo "rearrangement_file=${rearrangement_file}"
     echo ""
@@ -82,6 +83,10 @@ function run_assign_clones() {
         if [[ "$clone_tool" == "changeo" ]] ; then
             #echo "export bash changeo_clones.sh ${filename}" >> joblist
             echo "singularity exec ${singularity_image} bash changeo_clones.sh ${file} ${fileBasename}" >> joblist
+        fi
+
+        if [[ "$clone_tool" == "repcalc" ]] ; then
+            echo "singularity exec ${repcalc_image} bash repcalc_clones.sh ${metadata_file} ${file} ${fileBasename}" >> joblist
         fi
 
         count=$(( $count + 1 ))

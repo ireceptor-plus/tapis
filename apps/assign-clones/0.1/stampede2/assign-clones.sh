@@ -9,6 +9,7 @@
 
 # input files
 singularity_image="${singularity_image}"
+repcalc_image="${repcalc_image}"
 metadata_file="${metadata_file}"
 rearrangement_file="${rearrangement_file}"
 
