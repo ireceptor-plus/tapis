@@ -1,51 +1,25 @@
 #
-# Alakazam common functions
+# Statistics common functions
 #
 # This script relies upon global variables
-# source alakazam_common.sh
+# source statistics_common.sh
 #
+# VDJServer Analysis Portal
+# VDJServer Tapis applications
+# https://vdjserver.org
+#
+# Part of the iReceptor+ platform
+#
+# Copyright (C) 2021 The University of Texas Southwestern Medical Center
 # Author: Scott Christley
 # Date: Aug 17, 2020
 # 
 
-# required global variables:
-# PYTHON
-# AGAVE_JOB_ID
-# and...
-# The agave app input and parameters
-
 # the app
-export APP_NAME=alakazam
+export APP_NAME=statistics
 
-# ----------------------------------------------------------------------------
-function expandfile () {
-    fileBasename="${1%.*}" # file.txt.gz -> file.txt
-    fileExtension="${1##*.}" # file.txt.gz -> gz
-
-    if [ ! -f $1 ]; then
-        echo "Could not find input file $1" 1>&2
-        exit 1
-    fi
-
-    if [ "$fileExtension" == "gz" ]; then
-        gunzip $1
-        export file=$fileBasename
-        # don't archive the intermediate file
-    elif [ "$fileExtension" == "bz2" ]; then
-        bunzip2 $1
-        export file=$fileBasename
-    elif [ "$fileExtension" == "zip" ]; then
-        unzip -o $1
-        export file=$fileBasename
-    else
-        export file=$1
-    fi
-}
-
-# prevent Agave from archiving the file
-function noArchive() {
-    echo $1 >> .agave.archive
-}
+# bring in common functions
+source ./common_functions.sh
 
 # ----------------------------------------------------------------------------
 # Analysis provenance
@@ -60,12 +34,14 @@ function initProvenance() {
 function print_versions() {
     echo "VERSIONS:"
     singularity exec ${singularity_image} versions report
+    singularity exec ${repcalc_image} repcalc --version
     echo -e "\nSTART at $(date)"
 }
 
 function print_parameters() {
     echo "Input files:"
     echo "singularity_image=${singularity_image}"
+    echo "repcalc_image=${repcalc_image}"
     echo "metadata_file=${metadata_file}"
     echo "rearrangement_file=${rearrangement_file}"
     echo ""
@@ -73,9 +49,10 @@ function print_parameters() {
     echo "gene_usage_flag=${gene_usage_flag}"
     echo "aa_properties_flag=${aa_properties_flag}"
     echo "aa_properties_trim=${aa_properties_trim}"
+    echo "junction_length_flag=${junction_length_flag}"
 }
 
-function run_alakazam_workflow() {
+function run_statistics_workflow() {
     initProvenance
 
     # expand rearrangement file if its compressed
@@ -91,6 +68,14 @@ function run_alakazam_workflow() {
     if [[ $aa_properties_flag -eq 1 ]]; then
         # run it
         singularity exec -B $PWD:/data ${singularity_image} /data/aa_properties.R -d $file
+    fi
+
+    # Junction length distribution
+    if [[ $junction_length_flag -eq 1 ]]; then
+        # generate config
+        $PYTHON repcalc_create_config.py --init junction_length_template.json ${metadata_file} --rearrangementFile $file junction_length_config.json
+        # run it
+        singularity exec ${repcalc_image} repcalc junction_length_config.json
     fi
 
 }

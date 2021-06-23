@@ -1,7 +1,11 @@
 #
-# wrapper script
-# for Stampede2
-# 
+# Tapis app template script for Stampede2
+# Part of the iReceptor+ platform
+#
+# Author: Scott Christley
+# Copyright (C) 2021 The University of Texas Southwestern Medical Center
+# Date: Jun 22, 2021
+#
 
 # Configuration settings
 
@@ -9,6 +13,7 @@
 
 # input files
 singularity_image="${singularity_image}"
+repcalc_image="${repcalc_image}"
 metadata_file="${metadata_file}"
 rearrangement_file="${rearrangement_file}"
 
@@ -16,6 +21,7 @@ rearrangement_file="${rearrangement_file}"
 gene_usage_flag=${gene_usage_flag}
 aa_properties_flag="${aa_properties_flag}"
 aa_properties_trim="${aa_properties_trim}"
+junction_length_flag=${junction_length_flag}
 
 # Agave info
 AGAVE_JOB_ID=${AGAVE_JOB_ID}
@@ -60,7 +66,7 @@ export JOB_ERROR=0
 
 print_parameters
 print_versions
-run_alakazam_workflow
+run_statistics_workflow
 
 # End
 printf "DONE at $(date)\n\n"
