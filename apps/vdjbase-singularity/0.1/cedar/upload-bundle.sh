@@ -1,6 +1,6 @@
 #
 TOOL=changeo-singularity
-SYSTEM=ls5
+SYSTEM=cedar
 VER=irplus-0.1
 
 # delete old working area in tapis
