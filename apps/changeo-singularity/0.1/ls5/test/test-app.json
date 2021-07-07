@@ -1,0 +1,17 @@
+{
+  "name":"bcorrie_test_changeo-singularity",
+  "appId": "irplus-changeo-singularity-ls5-0.1",
+  "batchQueue": "normal",
+  "maxRunTime": "01:00:00",
+  "nodeCount": 1,
+  "archive": false,
+  "archiveSystem": "data.vdjserver.org",
+  "inputs": {
+    "singularity_image": "agave://data.vdjserver.org//irplus/images/immcantation_suite-4.1.0.sif",
+    "rearrangement_file": "agave://data.vdjserver.org//irplus/data/IG/ipa1/ipa1-668.tsv"
+  },
+  "parameters": {
+    "creator": "bcorrie",
+    "single_flag": true
+  }
+}

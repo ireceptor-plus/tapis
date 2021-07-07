@@ -1,0 +1,19 @@
+{
+  "name":"vdjbase-singularity",
+  "appId": "irplus-vdjbase-cedar-ireceptorgw-0.1",
+  "batchQueue": "default",
+  "maxRunTime": "01:00:00",
+  "nodeCount": 1,
+  "processorsOnEachNode": 2,
+  "memoryPerNode": "4GB",
+  "archive": false,
+  "archiveSystem": "cedar.computecanada.ca-storage-ireceptorgw",
+  "inputs": {
+    "singularity_image": "agave://cedar.computecanada.ca-storage-ireceptorgw/singularity/vdjbase/vdjbase_pipeline-1.1.01.sif",
+    "rearrangement_file": "agave://cedar.computecanada.ca-storage-ireceptorgw/data/S-CoV1_M0_Sort1_B_VDJ_HC_filtered.tsv"
+  },
+  "parameters": {
+    "creator": "bcorrie",
+    "sample_name": "S-CoV1_M0_Sort1_B_VDJ_HC"
+  }
+}

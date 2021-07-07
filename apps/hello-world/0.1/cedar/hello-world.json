@@ -1,0 +1,19 @@
+{
+  "name": "irplus-hello-world-cedar-ireceptorgw",
+  "version": "0.1",
+  "label": "hello-world",
+  "defaultQueue": "default",
+  "defaultNodeCount": 1,
+  "defaultProcessorsPerNode": 1,
+  "defaultRequestedTime": "1:00:00",
+  "shortDescription": "Hello World app on Cedar",
+  "longDescription": "iReceptor+ Hello World app",
+  "executionType": "HPC",
+  "executionSystem": "cedar.computecanada.ca-compute-ireceptorgw",
+  "parallelism": "PARALLEL",
+  "checkpointable": false,
+  "deploymentPath": "/tapis/apps/hello-world/0.1/cedar/",
+  "deploymentSystem": "cedar.computecanada.ca-storage-ireceptorgw",
+  "templatePath": "hello-world.sh",
+  "testPath": "test/test.sh"
+}

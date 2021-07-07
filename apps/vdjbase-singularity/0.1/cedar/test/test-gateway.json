@@ -1,0 +1,18 @@
+{
+  "name":"changeo-singularity",
+  "appId": "irplus-changeo-cedar-ireceptorgw-0.1",
+  "batchQueue": "default",
+  "maxRunTime": "01:00:00",
+  "nodeCount": 1,
+  "memoryPerNode": "8.0",
+  "archive": false,
+  "archiveSystem": "cedar.computecanada.ca-storage-ireceptorgw",
+  "inputs": {
+    "singularity_image": "agave://cedar.computecanada.ca-storage-ireceptorgw/singularity/immcantation/immcantation_suite-4.1.0.sif",
+    "rearrangement_file": "https://gateway.ireceptor.org/storage/ir_2021-04-28_2258_6089e87b22860.zip"
+  },
+  "parameters": {
+    "creator": "bcorrie",
+    "single_flag": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name":"test_hello-world",
+  "appId": "irplus-hello-world-cedar-ireceptorgw-0.1",
+  "batchQueue": "default",
+  "maxRunTime": "01:00:00",
+  "nodeCount": 1,
+  "archive": true,
+  "archiveSystem": "cedar.computecanada.ca-storage-ireceptorgw"
+}

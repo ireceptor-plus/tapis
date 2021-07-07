@@ -1,0 +1,161 @@
+{
+  "name": "irplus-changeo-cedar-ireceptorgw",
+  "version": "0.1",
+  "label": "changeo",
+  "defaultQueue": "default",
+  "defaultNodeCount": 1,
+  "defaultProcessorsPerNode": 1,
+  "defaultMemoryPerNode": "8GB",
+  "defaultRequestedTime": "1:00:00",
+  "shortDescription": "Change-o (singularity) app on cedar.computecanada.ca",
+  "longDescription": "iReceptor+ Change-O app using singularity image on Compute Canada's cedar ARC platform",
+  "executionType": "HPC",
+  "executionSystem": "cedar.computecanada.ca-compute-ireceptorgw",
+  "parallelism": "PARALLEL",
+  "checkpointable": false,
+  "deploymentPath": "/tapis/apps/changeo-singularity/0.1/cedar/",
+  "deploymentSystem": "cedar.computecanada.ca-storage-ireceptorgw",
+  "templatePath": "changeo.sh",
+  "testPath": "test/test.sh",
+  "ontology": [
+    "http://sswapmeet.sswap.info/agave/apps/Application"
+  ],
+  "modules": [
+    "purge"
+  ],
+  "inputs": [
+    {
+      "id": "singularity_image",
+      "details": {
+        "label": "",
+        "description": "Singularity image file",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/mime/application/Json"
+        ],
+        "fileTypes": [
+          "text-0"
+        ]
+      },
+      "value": {
+        "default": "",
+        "visible": true,
+        "required": true
+      }
+    },
+    {
+      "id": "rearrangement_file",
+      "details": {
+        "label": "",
+        "description": "Rearrangement AIRR TSV file",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/mime/application/Json"
+        ],
+        "fileTypes": [
+          "text-0"
+        ]
+      },
+      "value": {
+        "default": "",
+        "visible": true,
+        "required": true
+      }
+    }
+  ],
+  "parameters": [
+    {
+      "id": "creator",
+      "value": {
+        "visible": true,
+        "required": true,
+        "type": "string",
+        "default": ""
+      },
+      "details": {
+        "label": "Creator",
+        "description": "Username that created this job."
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:string"
+        ]
+      }
+    },
+    {
+      "id": "single_flag",
+      "value": {
+        "visible": true,
+        "required": true,
+        "type": "bool",
+        "order": 0,
+        "enquote": false,
+        "default": false,
+        "validator": null
+      },
+      "details": {
+        "label": "",
+        "description": "Boolean flag parameter",
+        "argument": null,
+        "showArgument": false,
+        "repeatArgument": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:boolean"
+        ]
+      }
+    },
+    {
+      "id": "optional_number",
+      "value": {
+        "visible": true,
+        "required": false,
+        "type": "number"
+      },
+      "details": {
+        "label": "",
+        "description": "Optional number parameter"
+      },
+      "semantics": {
+        "minCardinality": 0,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:integer"
+        ]
+      }
+    },
+    {
+      "id": "optional_enum",
+      "value": {
+        "visible": true,
+        "required": false,
+        "type": "enumeration",
+        "enumValues": [ "allele", "gene" ]
+      },
+      "details": {
+        "label": "",
+        "description": "Optional enum parameter"
+      },
+      "semantics": {
+        "minCardinality": 0,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:string"
+        ]
+      }
+    }
+  ]
+}
