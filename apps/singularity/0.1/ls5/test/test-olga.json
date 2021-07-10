@@ -1,0 +1,14 @@
+{
+  "name":"build_olga",
+  "appId": "irplus-singularity-ls5-0.1u1",
+  "batchQueue": "normal",
+  "maxRunTime": "01:00:00",
+  "nodeCount": 1,
+  "archive": false,
+  "archiveSystem": "data.vdjserver.org",
+  "parameters": {
+    "creator": "grojas",
+    "docker_image": "fevsea/olga:latest",
+    "singularity_image": "olga-latest"
+  }
+}

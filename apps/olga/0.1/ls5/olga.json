@@ -1,0 +1,142 @@
+{
+  "name": "irplus-olga-ls5-0.1",
+  "version": "0.1",
+  "label": "olga",
+  "defaultQueue": "normal",
+  "defaultNodeCount": 1,
+  "defaultProcessorsPerNode": 40,
+  "defaultRequestedTime": "1:00:00",
+  "shortDescription": "OLGA project",
+  "longDescription": "iReceptor+ olga app",
+  "executionType": "HPC",
+  "executionSystem": "irplus-ls5.tacc.utexas.edu",
+  "parallelism": "PARALLEL",
+  "checkpointable": false,
+  "deploymentPath": "/irplus/apps/olga/0.1/ls5/",
+  "deploymentSystem": "data.vdjserver.org",
+  "templatePath": "olga.sh",
+  "testPath": "test/test.sh",
+  "ontology": [
+    "http://sswapmeet.sswap.info/agave/apps/Application"
+  ],
+  "modules": [
+    "purge",
+    "load TACC"
+  ],
+  "inputs": [
+    {
+      "id": "singularity_image",
+      "details": {
+        "label": "",
+        "description": "Singularity image file",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/mime/application/Json"
+        ],
+        "fileTypes": [
+          "text-0"
+        ]
+      },
+      "value": {
+        "default": "",
+        "visible": true,
+        "required": true
+      }
+    },
+    {
+      "id": "cdr3_file",
+      "details": {
+        "label": "",
+        "description": "CDR3 sequence tsv file",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/mime/application/Json"
+        ],
+        "fileTypes": [
+          "text-0"
+        ]
+      },
+      "value": {
+        "default": "",
+        "visible": true,
+        "required": true
+      }
+    }
+  ],
+  "parameters": [
+    {
+      "id": "creator",
+      "value": {
+        "visible": true,
+        "required": true,
+        "type": "string",
+        "default": ""
+      },
+      "details": {
+        "label": "Creator",
+        "description": "Username that created this job."
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:string"
+        ]
+      }
+    },
+    {
+      "id": "single_flag",
+      "value": {
+        "visible": true,
+        "required": true,
+        "type": "bool",
+        "order": 0,
+        "enquote": false,
+        "default": false,
+        "validator": null
+      },
+      "details": {
+        "label": "",
+        "description": "Boolean flag parameter",
+        "argument": null,
+        "showArgument": false,
+        "repeatArgument": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:boolean"
+        ]
+      }
+    }, 
+    {
+      "id": "model",
+      "value": {
+        "visible": true,
+        "required": true,
+        "type": "string",
+        "default": ""
+      },
+      "details": {
+        "label": "model",
+        "description": "VDJ generative model to calculate the probabilities from."
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:string"
+        ]
+      }
+    }
+  ]
+}
