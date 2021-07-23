@@ -1,0 +1,138 @@
+{
+  "name": "irplus-vdjbase-stampede2",
+  "version": "0.1",
+  "label": "VDJBase",
+  "defaultQueue": "skx-normal",
+  "defaultNodeCount": 1,
+  "defaultProcessorsPerNode": 48,
+  "defaultRequestedTime": "1:00:00",
+  "shortDescription": "Genotype inference using VDJBase",
+  "longDescription": "iReceptor+ genotype inference using VDJBase. ",
+  "executionType": "HPC",
+  "executionSystem": "stampede2.tacc.utexas.edu",
+  "parallelism": "PARALLEL",
+  "checkpointable": false,
+  "deploymentPath": "/irplus/apps/vdjbase-singularity/0.1/stampede2/",
+  "deploymentSystem": "data.vdjserver.org",
+  "templatePath": "app.sh",
+  "testPath": "test/test.sh",
+  "ontology": [
+    "http://sswapmeet.sswap.info/agave/apps/Application"
+  ],
+  "modules": [
+    "purge"
+  ],
+  "inputs": [
+    {
+      "id": "singularity_image",
+      "details": {
+        "label": "",
+        "description": "Singularity image file",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/mime/application/Json"
+        ],
+        "fileTypes": [
+          "text-0"
+        ]
+      },
+      "value": {
+        "default": "agave://data.vdjserver.org//irplus/images/vdjbase_pipeline-1.1.01.sif",
+        "visible": false,
+        "required": true
+      }
+    },
+    {
+      "id": "metadata_file",
+      "details": {
+        "label": "",
+        "description": "AIRR Repertoire metadata file",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/mime/application/Json"
+        ],
+        "fileTypes": [
+          "text-0"
+        ]
+      },
+      "value": {
+        "default": "",
+        "visible": true,
+        "required": true
+      }
+    },
+    {
+      "id": "rearrangement_file",
+      "details": {
+        "label": "",
+        "description": "Rearrangement AIRR TSV file",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/mime/application/Json"
+        ],
+        "fileTypes": [
+          "text-0"
+        ]
+      },
+      "value": {
+        "default": "",
+        "visible": true,
+        "required": true
+      }
+    }
+  ],
+  "parameters": [
+    {
+      "id": "creator",
+      "value": {
+        "visible": true,
+        "required": true,
+        "type": "string",
+        "default": ""
+      },
+      "details": {
+        "label": "Creator",
+        "description": "Username that created this job."
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:string"
+        ]
+      }
+    },
+    {
+      "id": "sample_name",
+      "value": {
+        "visible": true,
+        "required": true,
+        "type": "string",
+        "default": ""
+      },
+      "details": {
+        "label": "Sample name",
+        "description": "Sample name for the repertoire being processed."
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:string"
+        ]
+      }
+    }
+  ]
+}
