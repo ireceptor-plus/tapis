@@ -34,6 +34,7 @@ AGAVE_LOG_NAME=${AGAVE_JOB_NAME}-${AGAVE_JOB_ID}
 
 chmod +x gene_usage.R
 chmod +x aa_properties.R
+chmod +x diversity_curve.R
 
 # modules
 module load python3

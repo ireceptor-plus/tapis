@@ -59,6 +59,19 @@ function run_statistics_workflow() {
     expandfile $rearrangement_file
     noArchive $file
 
+    # Assuming airr.tsv extension
+    fileBasename="${file%.*}" # file.airr.tsv -> file.airr
+    fileBasename="${fileBasename%.*}" # file.airr -> file
+
+    # extract the productive rearrangements
+    parseName="${fileBasename}.airr_parse-select.tsv"
+    filteredFile="${fileBasename}.productive.airr.tsv"
+    singularity exec ${singularity_image} ParseDb.py select -d ${file} -f productive -u T
+    mv $parseName $filteredFile
+
+    # Rearrangement counts
+    singularity exec ${singularity_image} python3 count_statistics.py $file
+
     # Gene Usage
     if [[ $gene_usage_flag -eq 1 ]]; then
         singularity exec -B $PWD:/data ${singularity_image} /data/gene_usage.R -d $file
@@ -78,4 +91,8 @@ function run_statistics_workflow() {
         singularity exec ${repcalc_image} repcalc junction_length_config.json
     fi
 
+    # Diversity curve
+    #if [[ $gene_usage_flag -eq 1 ]]; then
+        singularity exec -B $PWD:/data ${singularity_image} /data/diversity_curve.R -d $filteredFile
+    #fi
 }

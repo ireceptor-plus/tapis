@@ -42,8 +42,8 @@
         ]
       },
       "value": {
-        "default": "",
-        "visible": true,
+        "default": "agave://data.vdjserver.org//irplus/images/immcantation_suite-4.1.0.sif",
+        "visible": false,
         "required": true
       }
     },
