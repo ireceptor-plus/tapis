@@ -43,56 +43,57 @@ function print_parameters() {
     echo "singularity_image=${singularity_image}"
     echo "repcalc_image=${repcalc_image}"
     echo "metadata_file=${metadata_file}"
-    echo "rearrangement_file=${rearrangement_file}"
+    echo "airr_tsv_file=${airr_tsv_file}"
     echo ""
     echo "Application parameters:"
-    echo "gene_usage_flag=${gene_usage_flag}"
-    echo "aa_properties_flag=${aa_properties_flag}"
-    echo "aa_properties_trim=${aa_properties_trim}"
-    echo "junction_length_flag=${junction_length_flag}"
+    echo "file_type=${file_type}"
 }
 
 function run_statistics_workflow() {
     initProvenance
 
     # expand rearrangement file if its compressed
-    expandfile $rearrangement_file
+    expandfile $airr_tsv_file
     noArchive $file
 
     # Assuming airr.tsv extension
     fileBasename="${file%.*}" # file.airr.tsv -> file.airr
     fileBasename="${fileBasename%.*}" # file.airr -> file
 
-    # extract the productive rearrangements
-    parseName="${fileBasename}.airr_parse-select.tsv"
-    filteredFile="${fileBasename}.productive.airr.tsv"
-    singularity exec ${singularity_image} ParseDb.py select -d ${file} -f productive -u T
-    mv $parseName $filteredFile
-
     # Rearrangement counts
-    singularity exec ${singularity_image} python3 count_statistics.py $file
+    if [[ "$file_type" == "rearrangement" ]] ; then
+        singularity exec -e ${singularity_image} python3 count_statistics.py $file
+    fi
+
+    # Clonal abundance
+    if [[ "$file_type" == "clone" ]] ; then
+        singularity exec -e -B $PWD:/data ${singularity_image} /data/clonal_abundance.R -d $file -o $fileBasename
+    fi
 
     # Gene Usage
-    if [[ $gene_usage_flag -eq 1 ]]; then
-        singularity exec -B $PWD:/data ${singularity_image} /data/gene_usage.R -d $file
+    if [[ "$file_type" == "clone" ]] ; then
+        singularity exec -e -B $PWD:/data ${singularity_image} /data/gene_usage.R -d $file -o $fileBasename
+    fi
+    if [[ "$file_type" == "rearrangement" ]] ; then
+        # extract the productive rearrangements
+        parseName="${fileBasename}.airr_parse-select.tsv"
+        filteredFile="${fileBasename}.productive.airr.tsv"
+        singularity exec -e ${singularity_image} ParseDb.py select -d ${file} -f productive -u T
+        mv $parseName $filteredFile
+
+        singularity exec -e -B $PWD:/data ${singularity_image} /data/gene_usage.R -d $file -o $fileBasename
+        singularity exec -e -B $PWD:/data ${singularity_image} /data/gene_usage.R -d $filteredFile -o ${fileBasename}.productive
     fi
 
     # Amino Acid properties
-    if [[ $aa_properties_flag -eq 1 ]]; then
-        # run it
-        singularity exec -B $PWD:/data ${singularity_image} /data/aa_properties.R -d $file
-    fi
+    singularity exec -e -B $PWD:/data ${singularity_image} /data/aa_properties.R -d $file
 
     # Junction length distribution
-    if [[ $junction_length_flag -eq 1 ]]; then
-        # generate config
-        $PYTHON repcalc_create_config.py --init junction_length_template.json ${metadata_file} --rearrangementFile $file junction_length_config.json
-        # run it
-        singularity exec ${repcalc_image} repcalc junction_length_config.json
-    fi
+    $PYTHON repcalc_create_config.py --init junction_length_template.json ${metadata_file} --rearrangementFile $file junction_length_config.json
+    singularity exec -e ${repcalc_image} repcalc junction_length_config.json
 
     # Diversity curve
-    #if [[ $gene_usage_flag -eq 1 ]]; then
-        singularity exec -B $PWD:/data ${singularity_image} /data/diversity_curve.R -d $filteredFile
-    #fi
+    if [[ "$file_type" == "clone" ]] ; then
+        singularity exec -e -B $PWD:/data ${singularity_image} /data/diversity_curve.R -d $file -o $fileBasename
+    fi
 }

@@ -94,10 +94,10 @@
       }
     },
     {
-      "id": "rearrangement_file",
+      "id": "airr_tsv_file",
       "details": {
         "label": "",
-        "description": "Rearrangement AIRR TSV file",
+        "description": "AIRR TSV file",
         "showAttribute": false
       },
       "semantics": {
@@ -139,107 +139,26 @@
       }
     },
     {
-      "id": "gene_usage_flag",
+      "id": "file_type",
+      "details": {
+        "label": "File type to determine statistics",
+        "description": "",
+        "showAttribute": false
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      },
       "value": {
-        "visible": true,
+        "type": "enumeration",
+        "default": "rearrangement",
+        "enum_values": [
+          {"rearrangement": "rearrangement"},
+          {"clone": "clone"}
+        ],
         "required": true,
-        "type": "bool",
-        "order": 0,
-        "enquote": false,
-        "default": false,
-        "validator": null
-      },
-      "details": {
-        "label": "",
-        "description": "Calculate gene usage",
-        "argument": null,
-        "showArgument": false,
-        "repeatArgument": false
-      },
-      "semantics": {
-        "minCardinality": 1,
-        "maxCardinality": 1,
-        "ontology": [
-          "xsd:boolean"
-        ]
-      }
-    },
-    {
-      "id": "aa_properties_flag",
-      "value": {
-        "visible": true,
-        "required": true,
-        "type": "bool",
-        "order": 0,
-        "enquote": false,
-        "default": false,
-        "validator": null
-      },
-      "details": {
-        "label": "",
-        "description": "Calculate amino acid properties",
-        "argument": null,
-        "showArgument": false,
-        "repeatArgument": false
-      },
-      "semantics": {
-        "minCardinality": 1,
-        "maxCardinality": 1,
-        "ontology": [
-          "xsd:boolean"
-        ]
-      }
-    },
-    {
-      "id": "aa_properties_trim",
-      "value": {
-        "visible": true,
-        "required": false,
-        "type": "bool",
-        "order": 0,
-        "enquote": false,
-        "default": false,
-        "validator": null
-      },
-      "details": {
-        "label": "",
-        "description": "Trim parameter for calculate amino acid properties",
-        "argument": null,
-        "showArgument": false,
-        "repeatArgument": false
-      },
-      "semantics": {
-        "minCardinality": 1,
-        "maxCardinality": 1,
-        "ontology": [
-          "xsd:boolean"
-        ]
-      }
-    },
-    {
-      "id": "junction_length_flag",
-      "value": {
-        "visible": true,
-        "required": true,
-        "type": "bool",
-        "order": 0,
-        "enquote": false,
-        "default": false,
-        "validator": null
-      },
-      "details": {
-        "label": "",
-        "description": "Calculate junction length distribution",
-        "argument": null,
-        "showArgument": false,
-        "repeatArgument": false
-      },
-      "semantics": {
-        "minCardinality": 1,
-        "maxCardinality": 1,
-        "ontology": [
-          "xsd:boolean"
-        ]
+        "visible": true
       }
     }
   ]

@@ -15,13 +15,10 @@
 singularity_image="${singularity_image}"
 repcalc_image="${repcalc_image}"
 metadata_file="${metadata_file}"
-rearrangement_file="${rearrangement_file}"
+airr_tsv_file="${airr_tsv_file}"
 
 # application parameters
-gene_usage_flag=${gene_usage_flag}
-aa_properties_flag="${aa_properties_flag}"
-aa_properties_trim="${aa_properties_trim}"
-junction_length_flag=${junction_length_flag}
+file_type=${file_type}
 
 # Agave info
 AGAVE_JOB_ID=${AGAVE_JOB_ID}
