@@ -1,5 +1,5 @@
 {
-  "name": "assign-clones-stampede2",
+  "name": "irplus-assign-clones-stampede2",
   "version": "0.1",
   "label": "clones",
   "defaultQueue": "skx-normal",
@@ -9,7 +9,7 @@
   "shortDescription": "Clonal assignment on Stampede2",
   "longDescription": "Advanced analysis tools for immunoglobulin repertoire sequences",
   "executionType": "HPC",
-  "executionSystem": "stampede2.tacc.utexas.edu",
+  "executionSystem": "irplus-stampede2.tacc.utexas.edu",
   "parallelism": "PARALLEL",
   "checkpointable": false,
   "deploymentPath": "/irplus/apps/assign-clones/0.1/stampede2/",
@@ -42,8 +42,8 @@
         ]
       },
       "value": {
-        "default": "",
-        "visible": true,
+        "default": "agave://data.vdjserver.org//irplus/images/immcantation_suite-4.1.0.sif",
+        "visible": false,
         "required": true
       }
     },
