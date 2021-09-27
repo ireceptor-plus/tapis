@@ -1,0 +1,54 @@
+{
+    "id" : "irplus-stampede2.tacc.utexas.edu",
+    "name" : "Stampede2 Supercomputer",
+    "status" : "UP",
+    "type" : "EXECUTION",
+    "description" : "TACC Stampede2 Supercomputer",
+    "site" : "vdjserver.org",
+    "public" : true,
+    "executionType" : "HPC",
+    "scheduler" : "SLURM",
+    "environment" : null,
+    "startupScript" : null,
+    "maxSystemJobs" : 9999,
+    "maxSystemJobsPerUser" : 50,
+    "workDir" : "/work/01114/vdj",
+    "scratchDir" : "/scratch/01114/vdj",
+    "queues": [
+        {
+            "customDirectives": "-A iReceptor", 
+            "default": true, 
+            "maxJobs": 9999, 
+            "maxMemoryPerNode": "192GB",
+            "maxNodes": 16,
+            "maxProcessorsPerNode": 1536,
+            "maxRequestedTime": "48:00:00", 
+            "maxUserJobs": 25, 
+            "name": "skx-normal"
+        }
+    ], 
+    "login" : {
+      "host" : "stampede2.tacc.utexas.edu",
+      "port" : 22,
+      "protocol" : "SSH",
+      "auth" : {
+        "username": "vdj",
+	"publicKey": "",
+	"privateKey": "",
+        "type": "SSHKEYS"
+      }
+    },
+    "storage" : {
+      "host" : "stampede2.tacc.utexas.edu",
+      "port" : 22,
+      "protocol" : "SFTP",
+      "rootDir" : "/",
+      "homeDir" : "/scratch/01114/vdj",
+      "auth" : {
+        "username": "vdj",
+	"publicKey": "",
+	"privateKey": "",
+        "type": "SSHKEYS"
+      }
+    }
+}

@@ -9,7 +9,7 @@
   "shortDescription": "Statistics app on Stampede2",
   "longDescription": "iReceptor+ Statistics app",
   "executionType": "HPC",
-  "executionSystem": "stampede2.tacc.utexas.edu",
+  "executionSystem": "irplus-stampede2.tacc.utexas.edu",
   "parallelism": "PARALLEL",
   "checkpointable": false,
   "deploymentPath": "/irplus/apps/statistics/0.1/stampede2/",
