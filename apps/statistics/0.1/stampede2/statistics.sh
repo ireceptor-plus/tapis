@@ -14,10 +14,12 @@
 # input files
 singularity_image="${singularity_image}"
 repcalc_image="${repcalc_image}"
+germline_db="${germline_db}"
 metadata_file="${metadata_file}"
 airr_tsv_file="${airr_tsv_file}"
 
 # application parameters
+repertoire_id=${repertoire_id}
 file_type=${file_type}
 
 # Agave info
@@ -29,7 +31,7 @@ AGAVE_LOG_NAME=${AGAVE_JOB_NAME}-${AGAVE_JOB_ID}
 # unpack local executables
 #tar zxf binaries.tgz
 
-chmod +x gene_usage.R
+#chmod +x gene_usage.R
 chmod +x aa_properties.R
 chmod +x clonal_abundance.R
 chmod +x diversity_curve.R

@@ -71,6 +71,29 @@
       }
     },
     {
+      "id": "germline_db",
+      "details": {
+        "label": "",
+        "description": "Germline database",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "http://sswapmeet.sswap.info/mime/application/Json"
+        ],
+        "fileTypes": [
+          "text-0"
+        ]
+      },
+      "value": {
+        "default": "agave://data.vdjserver.org//irplus/data/germline/vdjserver_human_germline.airr.json",
+        "visible": true,
+        "required": true
+      }
+    },
+    {
       "id": "metadata_file",
       "details": {
         "label": "",
@@ -129,6 +152,26 @@
       "details": {
         "label": "Creator",
         "description": "Username that created this job."
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "maxCardinality": 1,
+        "ontology": [
+          "xsd:string"
+        ]
+      }
+    },
+    {
+      "id": "repertoire_id",
+      "value": {
+        "visible": true,
+        "required": true,
+        "type": "string",
+        "default": ""
+      },
+      "details": {
+        "label": "Repertoire ID",
+        "description": "Repertoire identifier."
       },
       "semantics": {
         "minCardinality": 1,
