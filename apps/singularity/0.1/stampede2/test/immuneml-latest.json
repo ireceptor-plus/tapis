@@ -1,0 +1,14 @@
+{
+  "name":"build_immuneml",
+  "appId": "irplus-singularity-stampede2-0.1",
+  "batchQueue": "skx-normal",
+  "maxRunTime": "01:00:00",
+  "nodeCount": 1,
+  "archive": false,
+  "archiveSystem": "data.vdjserver.org",
+  "parameters": {
+    "creator": "schristley",
+    "docker_image": "milenapavlovic/immuneml:latest",
+    "singularity_image": "immuneml-latest"
+  }
+}
