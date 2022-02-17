@@ -12,7 +12,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
     r-base \
     r-base-dev \
     wget \
-    curl
+    curl \
+    jq \
+    bsdmainutils
 
 RUN pip3 install \
     pandas \
@@ -23,6 +25,10 @@ RUN pip3 install \
 # Tapis CLI
 RUN cd / && git clone https://github.com/TACC-Cloud/tapis-cli.git
 RUN cd /tapis-cli && pip3 install --upgrade .
+
+# old-style Agave CLI
+RUN cd / && git clone https://github.com/vdjserver/agave-cli.git
+ENV PATH /agave-cli/bin:$PATH
 
 # Copy source
 RUN mkdir /irplus-tapis
