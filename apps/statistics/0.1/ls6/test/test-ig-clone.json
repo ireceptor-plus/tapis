@@ -1,0 +1,17 @@
+{
+  "name":"statistics",
+  "appId": "irplus-statistics-stampede2-0.1",
+  "batchQueue": "skx-normal",
+  "maxRunTime": "01:00:00",
+  "nodeCount": 1,
+  "archive": false,
+  "archiveSystem": "data.vdjserver.org",
+  "inputs": {
+    "metadata_file": "agave://data.vdjserver.org//irplus/data/IG/vdjserver2-bcr.airr.json",
+    "airr_tsv_file": "agave://data.vdjserver.org//irplus/data/IG/vdjserver2-bcr.allele.clone.airr.tsv.gz"
+  },
+  "parameters": {
+    "creator": "schristley",
+    "file_type": "clone"
+  }
+}
