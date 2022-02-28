@@ -42,8 +42,12 @@ function run_workflow() {
     initProvenance
     echo "Run Workflow"
 
+    # expand rearrangement file if its compressed
+    expandfile $rearrangement_file
+    noArchive $file
+
     # Run VDJBase pipeline on rearrangement file provided.
-    singularity exec -e -B ${PWD}:/data ${singularity_image} vdjbase-pipeline -f /data/${rearrangement_file} -s ${sample_name} -t ${AGAVE_JOB_PROCESSORS_PER_NODE} -o /data
+    singularity exec -e -B ${PWD}:/data ${singularity_image} vdjbase-pipeline -f /data/${file} -s ${sample_name} -t ${AGAVE_JOB_PROCESSORS_PER_NODE} -o /data
 
     echo "Done Workflow"
 }
