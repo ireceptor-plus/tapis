@@ -1,0 +1,72 @@
+{
+    "id" : "irplus-ls6.tacc.utexas.edu",
+    "name" : "Lonestar6 Supercomputer",
+    "status" : "UP",
+    "type" : "EXECUTION",
+    "description" : "Lonestar6 is composed of 560 compute nodes and 16 GPU nodes.",
+    "site" : "vdjserver.org",
+    "public" : true,
+    "executionType" : "HPC",
+    "scheduler" : "SLURM",
+    "environment" : null,
+    "startupScript" : null,
+    "maxSystemJobs" : 9999,
+    "maxSystemJobsPerUser" : 15,
+    "workDir" : "/work/01114/vdj",
+    "scratchDir" : "/scratch/01114/vdj",
+    "queues" : [ {
+      "name" : "normal",
+      "default" : true,
+      "maxJobs" : 9999,
+      "maxUserJobs" : 25,
+      "maxNodes" : 64,
+      "maxProcessorsPerNode" : 8192,
+      "maxRequestedTime": "48:00:00",
+      "maxMemoryPerNode" : "256GB",
+      "customDirectives" : "-A MCB21076"
+    }, {
+      "name" : "development",
+      "default" : false,
+      "maxJobs" : 9999,
+      "maxUserJobs" : 1,
+      "maxNodes" : 4,
+      "maxProcessorsPerNode" : 512,
+      "maxMemoryPerNode" : "256GB",
+      "maxRequestedTime": "02:00:00",
+      "customDirectives" : "-A MCB21076"
+    }, {
+      "name" : "gpu-a100",
+      "default" : false,
+      "maxJobs" : 9999,
+      "maxUserJobs" : 2,
+      "maxNodes" : 4,
+      "maxProcessorsPerNode" : 512,
+      "maxMemoryPerNode" : "256GB",
+      "maxRequestedTime": "48:00:00",
+      "customDirectives" : "-A MCB21076"
+    } ],
+    "login" : {
+      "host" : "ls6.tacc.utexas.edu",
+      "port" : 22,
+      "protocol" : "SSH",
+      "auth" : {
+        "username": "vdj",
+	"publicKey": "",
+	"privateKey": "",
+        "type": "SSHKEYS"
+      }
+    },
+    "storage" : {
+      "host" : "ls6.tacc.utexas.edu",
+      "port" : 22,
+      "protocol" : "SFTP",
+      "rootDir" : "/",
+      "homeDir" : "/scratch/01114/vdj",
+      "auth" : {
+        "username": "vdj",
+	"publicKey": "",
+	"privateKey": "",
+        "type": "SSHKEYS"
+      }
+    }
+}
