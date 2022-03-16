@@ -101,7 +101,7 @@ function run_statistics_workflow() {
     #singularity exec -e -B $PWD:/data ${singularity_image} /data/aa_properties.R -d $file
 
     # Junction length distribution
-    $PYTHON repcalc_create_config.py --init junction_length_template.json ${metadata_file} --rearrangementFile $file --repertoireID ${repertoire_id} junction_length_config.json
+    $PYTHON repcalc_create_config.py --init junction_length_template.json ${metadata_file} --rearrangementFile $file --repertoireID ${repertoire_id} --germline ${germline_db} junction_length_config.json
     singularity exec -e ${repcalc_image} repcalc junction_length_config.json
 
     # Diversity curve
