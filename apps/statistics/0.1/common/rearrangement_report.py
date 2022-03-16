@@ -34,11 +34,11 @@ def gene_usage(segment, file):
     reader = csv.DictReader(open(file, 'r'), dialect='excel-tab')
     for row in reader:
         name = segment
-        if row['mode'] == 'allele':
+        if row['level'] == 'allele':
             name = name + '_call'
         else:
-            name = name + '_' + row['mode']
-        name = name + '_' + row['level']
+            name = name + '_' + row['level']
+        name = name + '_' + row['mode']
         if row['productive'] in ['T', 't', 'TRUE', 'True', 'true']:
             name = name + '_productive'
         stat = statistics.get(name)
