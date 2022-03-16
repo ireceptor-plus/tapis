@@ -9,7 +9,7 @@
   "shortDescription": "Statistics app on Lonestar6",
   "longDescription": "iReceptor+ Statistics app",
   "executionType": "HPC",
-  "executionSystem": "ls6.tacc.utexas.edu",
+  "executionSystem": "irplus-ls6.tacc.utexas.edu",
   "parallelism": "PARALLEL",
   "checkpointable": false,
   "deploymentPath": "/irplus/apps/statistics/0.1/ls6/",
@@ -42,7 +42,7 @@
         ]
       },
       "value": {
-        "default": "agave://data.vdjserver.org//irplus/images/immcantation_suite-4.1.0.sif",
+        "default": "agave://data.vdjserver.org//irplus/images/immcantation-4.2.0.sif",
         "visible": false,
         "required": true
       }
@@ -65,7 +65,7 @@
         ]
       },
       "value": {
-        "default": "agave://data.vdjserver.org//irplus/images/repcalc-v2-airr.sif",
+        "default": "agave://data.vdjserver.org//irplus/images/repcalc-2.0.0.sif",
         "visible": false,
         "required": true
       }

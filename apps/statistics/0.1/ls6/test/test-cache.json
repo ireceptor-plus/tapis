@@ -1,0 +1,18 @@
+{
+  "name":"statistics",
+  "appId": "irplus-statistics-ls6-0.1",
+  "batchQueue": "normal",
+  "maxRunTime": "01:00:00",
+  "nodeCount": 1,
+  "archive": false,
+  "archiveSystem": "data.vdjserver.org",
+  "inputs": {
+    "metadata_file": "agave://data.vdjserver.org//community/cache/138180023656967700-242ac114-0001-012/repertoires.airr.json",
+    "airr_tsv_file": "agave://data.vdjserver.org//community/cache/138180023656967700-242ac114-0001-012/6096696254733292012-242ac114-0001-012.airr.tsv.gz"
+  },
+  "parameters": {
+    "creator": "schristley",
+    "repertoire_id": "6096696254733292012-242ac114-0001-012",
+    "file_type": "rearrangement"
+  }
+}
