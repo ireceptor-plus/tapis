@@ -39,5 +39,6 @@ tapis files list agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM
 # upload test assets
 tapis files upload agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM/test test/test.sh
 tapis files upload agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM/test test/test-app.json
+tapis files upload agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM/test test/test-cache.json
 tapis files list agave://data.vdjserver.org/irplus/apps/$TOOL/$VER/$SYSTEM/test
 

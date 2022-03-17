@@ -37,7 +37,7 @@ chmod +x clonal_abundance.R
 chmod +x diversity_curve.R
 
 # modules
-module load python3
+module load python3/3.7.0
 module load launcher/3.4
 module load tacc-singularity
 
