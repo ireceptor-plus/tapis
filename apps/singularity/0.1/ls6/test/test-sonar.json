@@ -1,0 +1,14 @@
+{
+  "name":"build_sonar",
+  "appId": "irplus-singularity-ls6-0.1",
+  "batchQueue": "normal",
+  "maxRunTime": "01:00:00",
+  "nodeCount": 1,
+  "archive": false,
+  "archiveSystem": "data.vdjserver.org",
+  "parameters": {
+    "creator": "schristley",
+    "docker_image": "scharch/sonar:latest",
+    "singularity_image": "sonar-latest"
+  }
+}
