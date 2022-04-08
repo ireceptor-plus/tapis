@@ -23,7 +23,7 @@
       "maxProcessorsPerNode" : 8192,
       "maxRequestedTime": "48:00:00",
       "maxMemoryPerNode" : "256GB",
-      "customDirectives" : "-A MCB21076"
+      "customDirectives" : "-A MCB22021"
     }, {
       "name" : "development",
       "default" : false,
@@ -33,7 +33,7 @@
       "maxProcessorsPerNode" : 512,
       "maxMemoryPerNode" : "256GB",
       "maxRequestedTime": "02:00:00",
-      "customDirectives" : "-A MCB21076"
+      "customDirectives" : "-A MCB22021"
     }, {
       "name" : "gpu-a100",
       "default" : false,
@@ -43,7 +43,7 @@
       "maxProcessorsPerNode" : 512,
       "maxMemoryPerNode" : "256GB",
       "maxRequestedTime": "48:00:00",
-      "customDirectives" : "-A MCB21076"
+      "customDirectives" : "-A MCB22021"
     } ],
     "login" : {
       "host" : "ls6.tacc.utexas.edu",
