@@ -9,7 +9,7 @@
   "shortDescription": "Create singularity image from docker image on Lonestar6",
   "longDescription": "Create singularity image from docker image on Lonestar6",
   "executionType": "HPC",
-  "executionSystem": "ls6.tacc.utexas.edu",
+  "executionSystem": "irplus-ls6.tacc.utexas.edu",
   "parallelism": "PARALLEL",
   "checkpointable": false,
   "deploymentPath": "/irplus/apps/singularity/0.1/ls6/",
