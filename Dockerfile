@@ -20,13 +20,14 @@ RUN pip3 install \
     pandas \
     biopython \
     matplotlib \
-    airr==v1.3.1
+    airr==v1.4.1 \
+    tapipy
 
-# Tapis CLI
+# Tapis V2 CLI
 RUN cd / && git clone https://github.com/TACC-Cloud/tapis-cli.git
 RUN cd /tapis-cli && pip3 install --upgrade .
 
-# old-style Agave CLI
+# old-style Agave V2 CLI
 RUN cd / && git clone https://github.com/vdjserver/agave-cli.git
 ENV PATH /agave-cli/bin:$PATH
 
