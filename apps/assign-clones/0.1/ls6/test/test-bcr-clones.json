@@ -1,0 +1,18 @@
+{
+  "name":"assign_bcr_clones",
+  "appId": "irplus-assign-clones-ls6-0.1",
+  "batchQueue": "normal",
+  "maxRunTime": "4:00:00",
+  "nodeCount": 1,
+  "archive": false,
+  "archiveSystem": "data.vdjserver.org",
+  "inputs": {
+    "metadata_file": "agave://data.vdjserver.org//irplus/data/IG/1016957755819626986-242ac113-0001-012.airr.json",
+    "germline_db": "agave://data.vdjserver.org//irplus/data/germline/vdjserver_human_germline.airr.json",
+    "rearrangement_file": "agave://data.vdjserver.org//irplus/data/IG/1016957755819626986-242ac113-0001-012.igblast.makedb.airr.tsv.gz"
+  },
+  "parameters": {
+    "creator": "scott_test1",
+    "clone_tool": "changeo"
+  }
+}

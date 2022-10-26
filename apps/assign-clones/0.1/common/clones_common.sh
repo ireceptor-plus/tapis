@@ -39,7 +39,8 @@ function initProvenance() {
 
 function print_versions() {
     echo "VERSIONS:"
-    singularity exec ${singularity_image} versions report
+    singularity exec -e ${singularity_image} versions report
+    singularity exec -e ${repcalc_image} repcalc --version
     echo -e "\nSTART at $(date)"
 }
 
@@ -48,6 +49,7 @@ function print_parameters() {
     echo "singularity_image=${singularity_image}"
     echo "repcalc_image=${repcalc_image}"
     echo "metadata_file=${metadata_file}"
+    echo "germline_db=${germline_db}"
     echo "rearrangement_file=${rearrangement_file}"
     echo ""
     echo "Application parameters:"
@@ -82,11 +84,11 @@ function run_assign_clones() {
         # Assign Clones
         if [[ "$clone_tool" == "changeo" ]] ; then
             #echo "export bash changeo_clones.sh ${filename}" >> joblist
-            echo "singularity exec ${singularity_image} bash changeo_clones.sh ${file} ${fileBasename}" >> joblist
+            echo "singularity exec -e ${singularity_image} bash changeo_clones.sh ${file} ${fileBasename}" >> joblist
         fi
 
         if [[ "$clone_tool" == "repcalc" ]] ; then
-            echo "singularity exec ${repcalc_image} bash repcalc_clones.sh ${metadata_file} ${file} ${fileBasename}" >> joblist
+            echo "singularity exec -e ${repcalc_image} bash repcalc_clones.sh ${metadata_file} ${germline_db} ${file} ${fileBasename}" >> joblist
         fi
 
         count=$(( $count + 1 ))

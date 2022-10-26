@@ -1,0 +1,17 @@
+{
+  "name":"assign_clones",
+  "appId": "irplus-assign-clones-ls6-0.1",
+  "batchQueue": "normal",
+  "maxRunTime": "01:00:00",
+  "nodeCount": 1,
+  "archive": false,
+  "archiveSystem": "data.vdjserver.org",
+  "inputs": {
+    "metadata_file": "agave://data.vdjserver.org//irplus/data/IG/vdjserver2-bcr.airr.json",
+    "rearrangement_file": "agave://data.vdjserver.org//irplus/data/IG/vdjserver2-bcr.airr.tsv.gz"
+  },
+  "parameters": {
+    "creator": "scott_test1",
+    "clone_tool": "changeo"
+  }
+}
